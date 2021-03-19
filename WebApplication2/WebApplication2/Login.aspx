@@ -9,25 +9,41 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
     <style>
+        body{
+            background-image:url("photo/photo.png");
+        }
+
         #center{
-            margin-top:15%;
-            margin-left:40%;
+            
             background-color:lightgrey;
             height:300px;
             width:300px;
             padding:50px;
-           
+            margin:auto;
+            margin-top:300px !important;
+            
         }
+        h1{
+            margin-top:150px;
+            margin-bottom:-200px;
+        }
+        
+        
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
+        <div>
+           <center> <h1 class="display-4">財務管理系統登入</h1></center>
+        </div>
         <div id="center">
+            
         帳號:<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-            </br>
-        密碼:<asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
-            <asp:Button ID="Button1" runat="server" Text="登入" />
+            <br/>
+        密碼:<asp:TextBox ID="TextBox2" runat="server" type="password"></asp:TextBox>
+            <asp:Button ID="Button1" runat="server" Text="登入" OnClick="Button1_Click" />
        </div>
+        
     </form>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
