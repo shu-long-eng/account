@@ -27,7 +27,9 @@
             margin-top:150px;
             margin-bottom:-200px;
         }
-        
+        #Label1{
+            color:red;
+        }
         
     </style>
 </head>
@@ -42,6 +44,9 @@
             <br/>
         密碼:<asp:TextBox ID="TextBox2" runat="server" type="password"></asp:TextBox>
             <asp:Button ID="Button1" runat="server" Text="登入" OnClick="Button1_Click" />
+            <br />
+            <br />
+            <asp:Label ID="Label1" runat="server" Text="帳號或密碼錯誤" Visible="False"></asp:Label>
        </div>
         
     </form>

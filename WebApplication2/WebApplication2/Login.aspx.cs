@@ -11,11 +11,28 @@ namespace WebApplication2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+
+            string account = this.TextBox1.Text;
+
+            string passowrd = this.TextBox2.Text;
+
+            bool acc = accountDB.confirmAcc(account);
+
+            bool pw = accountDB.confirmPw(passowrd);
+
+            if(acc == false && pw == false)
+            {
+                this.Label1.Visible = false;
+            }
+            else
+            {
+                this.Label1.Visible = true;
+            }
 
         }
     }
