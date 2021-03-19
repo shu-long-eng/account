@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="現金日記帳.aspx.cs" Inherits="WebApplication2.WebForm2" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="homepage.aspx.cs" Inherits="WebApplication2.WebForm2" %>
 
 <!DOCTYPE html>
 
@@ -10,6 +10,11 @@
         crossorigin="anonymous">
 
     <style>
+        body{
+            background-image:url("photo/歡迎主管.png");
+
+
+        }
         .wrapper{
             display: flex;
             width:100%;
@@ -27,6 +32,10 @@
         }
 .active {
     background-color: rgb(132,194,255) !important;
+}
+h1{
+    margin-top:100px;
+    margin-left:600px;
 }
        
     </style>
@@ -46,7 +55,7 @@
                 <ul class="list-unstyled components">
 
                     <p>功能表</p>
-
+                    
                     <li class="list-group-item list-group-item-action list-group-item-primary">
                         <a href="#">現金日記帳</a>
                     </li>
@@ -65,15 +74,11 @@
 
                 </ul>
             </nav>
-
+           <div>
+               <h1 class="display-4">歡迎進入本系統</h1></center>
+           </div>
         
 
-
-
-
-        
-
-            
 
 
     </form>

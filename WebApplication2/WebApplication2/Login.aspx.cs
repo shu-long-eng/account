@@ -27,7 +27,7 @@ namespace WebApplication2
 
             if(acc == false && pw == false)
             {
-                Server.Transfer("現金日記帳.aspx");
+                Server.Transfer("homepage.aspx");
             }
             else
             {
