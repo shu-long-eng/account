@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm3.aspx.cs" Inherits="WebApplication2.WebForm3" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="WebApplication2.WebForm3" %>
 
 <!DOCTYPE html>
 
@@ -8,43 +8,26 @@
     <title></title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
-
     <style>
-        .wrapper {
-    display: flex;
-    width: 100%;
-}
-        li{
-            color:black;
+        #center{
+            margin-top:15%;
+            margin-left:40%;
+            background-color:lightgrey;
+            height:300px;
+            width:300px;
+            padding:50px;
+           
         }
-
-#sidebar {
-    width: 250px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    z-index: 999;
-    background: #7386D5;
-    color: #fff;
-    transition: all 0.3s;
-}
-li{
-    color:black;
-}
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
- 
-    <ul class="nav nav-tabs ">
-        <li class="list-group-item-action "><a href="#">Home</a></li>
-        <li class="list-group-item list-group-item-action active"><a href="#">Page 1</a></li>
-        <li class="list-group-item list-group-item-action"><a href="#">Page 2</a></li>
-        <li class="list-group-item list-group-item-action"><a href="#">Page 3</a></li>
-    </ul>
-
-    
+        <div id="center">
+        帳號:<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+            </br>
+        密碼:<asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+            <asp:Button ID="Button1" runat="server" Text="登入" />
+       </div>
     </form>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

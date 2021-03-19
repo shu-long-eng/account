@@ -47,7 +47,7 @@
 
                     <p>功能表</p>
 
-                    <li class="list-group-item list-group-item-action list-group-item-primary active">
+                    <li class="list-group-item list-group-item-action list-group-item-primary">
                         <a href="#">現金日記帳</a>
                     </li>
 
