@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm2.aspx.cs" Inherits="WebApplication2.WebForm2" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="現金日記帳.aspx.cs" Inherits="WebApplication2.WebForm2" %>
 
 <!DOCTYPE html>
 
@@ -22,11 +22,13 @@
     left: 0;
     height: 100vh;
     z-index: 999;
-    background: #84C1FF;
-    color: #fff;
-    
+    background: rgb(184,218,255);
+    color: white;
         }
-
+.active {
+    background-color: rgb(132,194,255) !important;
+}
+       
     </style>
 </head>
 <body>
@@ -45,19 +47,19 @@
 
                     <p>功能表</p>
 
-                    <li class="active">
+                    <li class="list-group-item list-group-item-action list-group-item-primary active">
                         <a href="#">現金日記帳</a>
                     </li>
 
-                    <li class="active">
+                    <li class="list-group-item list-group-item-action list-group-item-primary">
                         <a href="#">現金分析表</a>
                     </li>
 
-                    <li class="active">
+                    <li class="list-group-item list-group-item-action list-group-item-primary">
                         <a href="#">零用金管理</a>
                     </li>
 
-                    <li class="active">
+                    <li class="list-group-item list-group-item-action list-group-item-primary">
                         <a href="#">稅務資料</a>
                     </li>
 
@@ -65,14 +67,18 @@
             </nav>
 
         
+
+
+
+
         
 
-
+            
 
 
     </form>
 
-
+    
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"

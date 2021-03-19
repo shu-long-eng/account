@@ -14,6 +14,9 @@
     display: flex;
     width: 100%;
 }
+        li{
+            color:black;
+        }
 
 #sidebar {
     width: 250px;
@@ -26,75 +29,24 @@
     color: #fff;
     transition: all 0.3s;
 }
+li{
+    color:black;
+}
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="wrapper">
-    <!-- Sidebar -->
-    <nav id="sidebar">
-        <div class="sidebar-header">
-            <h3>Bootstrap Sidebar</h3>
-        </div>
+ 
+    <ul class="nav nav-tabs ">
+        <li class="list-group-item-action "><a href="#">Home</a></li>
+        <li class="list-group-item list-group-item-action active"><a href="#">Page 1</a></li>
+        <li class="list-group-item list-group-item-action"><a href="#">Page 2</a></li>
+        <li class="list-group-item list-group-item-action"><a href="#">Page 3</a></li>
+    </ul>
 
-        <ul class="list-unstyled components">
-            <p>Dummy Heading</p>
-            <li class="active">
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
-                <ul class="collapse list-unstyled" id="homeSubmenu">
-                    <li>
-                        <a href="#">Home 1</a>
-                    </li>
-                    <li>
-                        <a href="#">Home 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Home 3</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">About</a>
-            </li>
-            <li>
-                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
-                <ul class="collapse list-unstyled" id="pageSubmenu">
-                    <li>
-                        <a href="#">Page 1</a>
-                    </li>
-                    <li>
-                        <a href="#">Page 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Page 3</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">Portfolio</a>
-            </li>
-            <li>
-                <a href="#">Contact</a>
-            </li>
-        </ul>
-
-    </nav>
-    <!-- Page Content -->
-    <%--<div id="content">
-
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-
-                <button type="button" id="sidebarCollapse" class="btn btn-info">
-                    <i class="fas fa-align-left"></i>
-                    <span>Toggle Sidebar</span>
-                </button>
-            </div>
-        </nav>
-    </div>
-</div>--%>
+    
     </form>
-
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
