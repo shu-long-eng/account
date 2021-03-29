@@ -21,13 +21,16 @@ namespace WebApplication2
 
             string passowrd = this.TextBox2.Text;
 
-            bool acc = accountDB.confirmAcc(account);
+            bool acc = DB.confirmAcc(account);
 
-            bool pw = accountDB.confirmPw(passowrd);
+            bool pw = DB.confirmPw(passowrd);
 
             if(acc == false && pw == false)
             {
-                Server.Transfer("homepage.aspx");
+                string targetUrl =
+                    "~/homepage.aspx?User=" + this.TextBox1.Text;
+
+                Response.Redirect(targetUrl);
             }
             else
             {

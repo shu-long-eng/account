@@ -1,5 +1,8 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="homepage.aspx.cs" Inherits="WebApplication2.WebForm2" %>
 
+<%@ Register Src="~/ucNav.ascx" TagPrefix="uc1" TagName="ucNav" %>
+
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -8,36 +11,11 @@
     <title></title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
-
+    <link href="CSS/CSS.css" rel="stylesheet" />
     <style>
-        body{
-            background-image:url("photo/歡迎主管.png");
-
-
-        }
-        .wrapper{
-            display: flex;
-            width:100%;
-        }
-
-        #sidebar{
-             width: 250px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    z-index: 999;
-    background: rgb(184,218,255);
-    color: white;
-        }
-.active {
-    background-color: rgb(132,194,255) !important;
+       body {
+    background-image: url("photo/歡迎主管.png");
 }
-h1{
-    margin-top:100px;
-    margin-left:600px;
-}
-       
     </style>
 </head>
 <body>
@@ -47,35 +25,11 @@ h1{
 
             <nav id="sidebar">
 
-                <div class="sidebar-header">
-
-                    <h3>財務管理系統</h3>
-                </div>
-
-                <ul class="list-unstyled components">
-
-                    <p>功能表</p>
-                    
-                    <li class="list-group-item list-group-item-action list-group-item-primary">
-                        <a href="#">現金日記帳</a>
-                    </li>
-
-                    <li class="list-group-item list-group-item-action list-group-item-primary">
-                        <a href="#">現金分析表</a>
-                    </li>
-
-                    <li class="list-group-item list-group-item-action list-group-item-primary">
-                        <a href="#">零用金管理</a>
-                    </li>
-
-                    <li class="list-group-item list-group-item-action list-group-item-primary">
-                        <a href="#">稅務資料</a>
-                    </li>
-
-                </ul>
+                <uc1:ucNav runat="server" ID="ucNav" />
             </nav>
            <div>
-               <h1 class="display-4">歡迎進入本系統</h1></center>
+               <asp:Literal ID="Literal1" runat="server"></asp:Literal>
+               <h1 class="display-4"> 歡迎進入本系統</h1>
            </div>
         
 
@@ -90,6 +44,15 @@ h1{
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+
+
+    <script type="text/javascript">
+
+
+       
+
+
+    </script>
 
 </body>
 </html>

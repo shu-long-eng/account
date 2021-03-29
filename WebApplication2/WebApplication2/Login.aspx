@@ -34,7 +34,7 @@
     </style>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server" method="post">
         <div>
            <center> <h1 class="display-4">財務管理系統登入</h1></center>
         </div>
