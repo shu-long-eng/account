@@ -4,20 +4,23 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
 
 namespace WebApplication2
 {
-    
     public partial class 現金日記帳 : System.Web.UI.Page
     {
-        
+        public static string cmdArgu;
+        public string modalID { get; set; }
         protected void Page_init(object sender, EventArgs e)
         {
-            this.Repeater1.DataSource = DB.showTotalDB();
+            string DBName = "Assets";
+            this.Repeater1.DataSource = DB.ShowDataTable(DBName);
             this.Repeater1.DataBind();
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            
 
         }
 
@@ -27,24 +30,34 @@ namespace WebApplication2
         }
         protected void Page_PreRender(object sender, EventArgs e)
         {
-            this.Repeater1.DataSource = DB.showTotalDB();
+            string DBName = "Assets";
+            this.Repeater1.DataSource = DB.ShowDataTable(DBName);
             this.Repeater1.DataBind();
+           
         }
 
         protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
             string cmdName = e.CommandName;
 
-            string cmdArgu = e.CommandArgument.ToString();
+            cmdArgu = e.CommandArgument.ToString();
 
             if ("deleteItem" == cmdName)
             {
+                DB.BeforeDelete(cmdArgu);
+
                 DB.deleteDB(cmdArgu);
+            }
+            if ("EditItem" == cmdName)
+            {
+                string targetUrl =
+                    "~/修改項目.aspx?ID=" + cmdArgu;
 
-                this.Repeater1.DataSource = DB.showTotalDB();
-                this.Repeater1.DataBind();
-
+                Response.Redirect(targetUrl);
             }
         }
+        
+        
+
     }
 }

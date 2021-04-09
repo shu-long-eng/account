@@ -9,7 +9,7 @@ namespace WebApplication2
 {
     public class DB
     {
-        static string connectionstring = "Data Source=localhost\\SQLExpress;Initial Catalog=財經系統;Integrated Security=true";
+        const string connectionstring = "Data Source=localhost\\SQLExpress;Initial Catalog=財經系統;Integrated Security=true";
         public static Boolean confirmAcc(string account)
         {
             string querystr = $@"select Account from [User] where Account = @account;";
@@ -24,7 +24,7 @@ namespace WebApplication2
                 {
                     con.Open();
 
-                    SqlDataReader reader =  command.ExecuteReader();
+                    SqlDataReader reader = command.ExecuteReader();
 
                     if (!reader.Read())
                     {
@@ -37,7 +37,7 @@ namespace WebApplication2
                         return false;
                     }
 
-          
+
                 }
                 catch (Exception e)
                 {
@@ -86,7 +86,7 @@ namespace WebApplication2
         }
         public static DataTable showTotalDB()
         {
-            string querystring = @"SELECT  * from Assets ORDER BY ID DESC;";
+            string querystring = @"SELECT  * from Assets;";
 
             using (SqlConnection con = new SqlConnection(connectionstring))
             {
@@ -115,11 +115,11 @@ namespace WebApplication2
             }
 
         }
-        public static void insertDB(string date, string sub, string usefor, int money, string outIn)
+        public static void insertDB(string date, string sub, string usefor, int? money, string outIn)
         {
-            string queryTotalMoney = @"select top 1 [餘額] from [Assets] order by [ID] desc ;";
+            string queryTotalMoney = @"select top 1 [Total] from [Assets] order by [ID] desc ;";
 
-            string querystr = @"insert into Assets (日期,科目,摘要,金額,[收/支],餘額)
+            string querystr = @"insert into Assets (Date,Sub,Usefor,Money,[IncomeAndExpenditure],Total)
                         values (@date,@sub,@usefor,@money,@outIn,@total);";
             using (SqlConnection con = new SqlConnection(connectionstring))
             {
@@ -133,7 +133,21 @@ namespace WebApplication2
                     DataTable dt = new DataTable();
                     dt.Load(reader);
 
-                    int? total = dt.Rows[0]["餘額"] as int?;
+                    int? total;
+                    if (dt.Rows.Count > 0) {
+                        total = dt.Rows[0].Field<int?>("Total");
+                    }
+                    else
+                    {
+                        total = 0;
+                    }
+
+                    
+
+                    if(total == null)
+                    {
+                        total = 0;
+                    }
 
                     if (outIn == "收入")
                     {
@@ -143,12 +157,14 @@ namespace WebApplication2
                     {
                         total = total - money;
                     }
+                
+                  
                     command.Parameters.AddWithValue("@date", date);
                     command.Parameters.AddWithValue("@sub",sub);
                     command.Parameters.AddWithValue("@usefor",usefor);
                     command.Parameters.AddWithValue("@money",money);
-                    command.Parameters.AddWithValue("@outIn",outIn);
-                    command.Parameters.AddWithValue("@total",total);
+                    command.Parameters.AddWithValue("@outIn", outIn);
+                    command.Parameters.AddWithValue("@total", total);
                     
                     command.ExecuteNonQuery();
                 }
@@ -165,9 +181,11 @@ namespace WebApplication2
         }
         public static void deleteDB(string id)
         {
-            string querystr = @"delete Assets where ID=@ID;";
+            //string querystr = @"update assets set [delete] = 1 where ID = @id;";
 
-            using(SqlConnection con = new SqlConnection(connectionstring))
+           string querystr = @"delete Assets where ID=@ID;";
+
+            using (SqlConnection con = new SqlConnection(connectionstring))
             {
                 SqlCommand command = new SqlCommand(querystr, con);
                 command.Parameters.AddWithValue("@ID", id);
@@ -185,5 +203,260 @@ namespace WebApplication2
                 }
             }
         }
+        public static DataTable searchDB(string id)
+        {
+            string querystring = @"SELECT  * from Assets where ID=@ID;";
+            
+            using(SqlConnection con = new SqlConnection(connectionstring))
+            {
+                SqlCommand command = new SqlCommand(querystring, con);
+
+                command.Parameters.AddWithValue("@ID", id);
+
+                try
+                {
+                    con.Open();
+
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    DataTable dt = new DataTable();
+
+                    dt.Load(reader);
+
+                    reader.Close();
+
+                    return dt;
+                }catch(Exception e)
+                {
+                    HttpContext.Current.Response.Write(e);
+                    return null;
+                }
+            }
+        }
+        public static bool UpdateDB(string id,string date, string sub, string usefor, int money, string outIn, int total)
+        {
+            string querystr = @"update [Assets] set Date = @date, Sub = @sub, Usefor = @usefor, 
+                                Money = @money, IncomeAndExpenditure = @outIn, Total = @total where ID = @id;";
+            using(SqlConnection con = new SqlConnection(connectionstring))
+            {
+                SqlCommand command = new SqlCommand(querystr, con);
+                command.Parameters.AddWithValue("@date", date);
+                command.Parameters.AddWithValue("@sub", sub);
+                command.Parameters.AddWithValue("@usefor", usefor);
+                command.Parameters.AddWithValue("@money", money);
+                command.Parameters.AddWithValue("@outIn", outIn);
+                command.Parameters.AddWithValue("@total", total);
+                command.Parameters.AddWithValue("@id", id);
+
+                try
+                {
+                    con.Open();
+
+                    if (total > 0)
+                    {
+                        command.ExecuteNonQuery();
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+
+                    
+
+                }catch(Exception e)
+                {
+                    HttpContext.Current.Response.Write(e);
+                    return false;
+                }
+            }
+        }
+        public static void BeforeDelete(string id)
+        {
+            string querystring = @"SELECT  * from Assets where ID=@ID;";
+
+             string NewQuery;
+
+            using(SqlConnection con = new SqlConnection(connectionstring))
+            {
+                SqlCommand command = new SqlCommand(querystring, con);
+
+                command.Parameters.AddWithValue("@ID", id);
+
+                try
+                {
+                    con.Open();
+
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    DataTable dt = new DataTable();
+
+                    dt.Load(reader);
+
+                    string outIn = dt.Rows[0].Field<string>("IncomeAndExpenditure");
+
+                    int money = dt.Rows[0].Field<int>("Money");
+
+                    if(outIn == "收入")
+                    {
+                        NewQuery = "update Assets set total = total - @money where ID > @ID;";
+
+                        SqlCommand Newcommand = new SqlCommand(NewQuery, con);
+
+                        Newcommand.Parameters.AddWithValue("@ID", id);
+
+                        Newcommand.Parameters.AddWithValue("@money", money);
+
+                        Newcommand.ExecuteNonQuery();
+                    }
+                    else
+                    {
+                        NewQuery = "update Assets set total = total + @money where ID > @ID;";
+
+                        SqlCommand Newcommand = new SqlCommand(NewQuery, con);
+
+                        Newcommand.Parameters.AddWithValue("@ID", id);
+
+                        Newcommand.Parameters.AddWithValue("@money", money);
+
+                        Newcommand.ExecuteNonQuery();
+                    }
+                    command.ExecuteNonQuery();
+                }catch(Exception e)
+                {
+                    HttpContext.Current.Response.Write(e);
+                }
+            }
+        }
+        public static bool BalanceCheck(int money)
+        {
+            string querystring = @"select top(1) total from Assets order by ID desc;";
+
+            using(SqlConnection con = new SqlConnection(connectionstring))
+            {
+                SqlCommand command = new SqlCommand(querystring, con);
+
+                try
+                {
+                    con.Open();
+
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    DataTable dt = new DataTable();
+
+                    dt.Load(reader);
+
+                    int total = dt.Rows[0].Field<int>("total");
+
+                    if (total < money)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }catch(Exception e)
+                {
+                    //HttpContext.Current.Response.Write(e);
+                    return true;
+                }
+            }
+        }
+        public static bool NewBalance(int total, int newTotal, string id)
+        {
+            string querystring = @"update [Assets] set total = total + @newMoney where ID > @id;"; //
+
+            int newMoney = newTotal - total;
+
+            using(SqlConnection con = new SqlConnection(connectionstring))
+            {
+                SqlCommand command = new SqlCommand(querystring, con);
+
+                command.Parameters.AddWithValue("@newMoney", newMoney);
+                command.Parameters.AddWithValue("@id", id);
+
+                try
+                {
+                    con.Open();
+
+                    string checkBalance = @"select total from [Assets] where total <0;";
+
+                    SqlCommand checkCommand = new SqlCommand(checkBalance, con);
+
+                    SqlDataReader reader = checkCommand.ExecuteReader();
+
+                    DataTable dt = new DataTable();
+
+                    dt.Load(reader);
+
+                    if(dt.Rows.Count > 0) {
+                        return false;
+                    }
+                    else
+                    {
+                        command.ExecuteNonQuery();
+                        return true;
+                    }
+
+                    
+                }catch(Exception e)
+                {
+                    HttpContext.Current.Response.Write(e);
+                    return false;
+                }
+            }
+        }
+        public static DataTable ShowDataTable(string DBName)
+        {
+            string querystring = "select * from " + DBName + ";";
+
+            using(SqlConnection con = new SqlConnection(connectionstring))
+            {
+                SqlCommand command = new SqlCommand(querystring, con);
+                
+                try
+                {
+                    con.Open();
+
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    DataTable dt = new DataTable();
+
+                    dt.Load(reader);
+
+                    reader.Close();
+
+                    return dt;
+                }catch(Exception e)
+                {
+                    HttpContext.Current.Response.Write(e);
+
+                    return null;
+                }
+            }
+        }
+        public static void AddSubList(string sub)
+        {
+            string querystring = @"insert into SubList (Sublist) values (@sub);";
+
+            using(SqlConnection con = new SqlConnection(connectionstring))
+            {
+                SqlCommand command = new SqlCommand(querystring, con);
+                command.Parameters.AddWithValue("@sub", sub);
+
+                try
+                {
+                    con.Open();
+
+                    command.ExecuteNonQuery();
+                }catch(Exception e)
+                {
+                    HttpContext.Current.Response.Write(e);
+                }
+            }
+        }
+        
+        
     }
 }

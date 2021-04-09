@@ -61,6 +61,14 @@
                         <a href="#">稅務資料</a>
                     </li>
 
+                    <li class="nav-item dropdown">
+                        <a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">稅務資料</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">銷項稅額</a>
+                            <a class="dropdown-item" href="#">進項稅額</a>
+                        </div>
+                    </li>
+
                 </ul>
             </nav>
         </div>

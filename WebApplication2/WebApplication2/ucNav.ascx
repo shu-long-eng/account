@@ -24,12 +24,27 @@
                         <a href="#">零用金管理</a>
                     </li>
 
-                    <li class="list-group-item list-group-item-action list-group-item-primary">
+                    <%--<li class="list-group-item list-group-item-action list-group-item-primary">
                         <a href="#">稅務資料</a>
+                    </li>--%>
+
+
+                    <li class="nav-item dropdown list-group-item list-group-item-action list-group-item-primary">
+                        <a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false" id ="myMenu">稅務資料</a>
+                        <div class="dropdown-menu" aria-labelledby="myMenu">
+                            <a class="dropdown-item" href="#">總攬</a>
+                            <a class="dropdown-item" href="#">銷項稅額</a>
+                            <a class="dropdown-item" href="#">進項稅額</a>
+                        </div>
                     </li>
 
                      <li class="list-group-item list-group-item-action list-group-item-primary">                 
-                         <a href="Login.aspx">登出</a>
+                         <asp:PlaceHolder ID="LoginPlc" runat="server" Visible="false">
+                         <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">登出</asp:LinkButton>
+                         </asp:PlaceHolder> 
+                         <asp:PlaceHolder ID="LogoutPlc" runat="server" Visible="false">
+                             <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click">登入</asp:LinkButton>
+                         </asp:PlaceHolder>
                     </li>
 
                 </ul>

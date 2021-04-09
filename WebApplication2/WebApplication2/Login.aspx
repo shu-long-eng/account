@@ -42,7 +42,7 @@
             
         帳號:<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
             <br/>
-        密碼:<asp:TextBox ID="TextBox2" runat="server" type="password"></asp:TextBox>
+        密碼:<asp:TextBox ID="TextBox2" runat="server" TextMode="password"></asp:TextBox>
             <asp:Button ID="Button1" runat="server" Text="登入" OnClick="Button1_Click" />
             <br />
             <br />

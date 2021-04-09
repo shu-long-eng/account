@@ -11,7 +11,25 @@ namespace WebApplication2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (LoginHelper.HasLogined())
+            {
+                this.LoginPlc.Visible = true;
+            }
+            else
+            {
+                this.LogoutPlc.Visible = true;
+            }
+        }
 
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            LoginHelper.Logout();
+            Response.Redirect("~/Login.aspx");
+        }
+
+        protected void LinkButton2_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Login.aspx");
         }
     }
 }

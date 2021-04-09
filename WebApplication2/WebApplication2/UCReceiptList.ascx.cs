@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace WebApplication2
 {
-    public partial class 測試model : System.Web.UI.Page
+    public partial class UCReceiptList : System.Web.UI.UserControl
     {
         protected void Page_Load(object sender, EventArgs e)
         {

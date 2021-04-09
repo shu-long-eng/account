@@ -11,7 +11,13 @@ namespace WebApplication2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (LoginHelper.HasLogined()) //判斷是否已經登入
+            {
+                string targetUrl =
+                    "~/homepage.aspx?User=" + LoginHelper.GetUserName();
+
+                Response.Redirect(targetUrl);  //如果已登入跳轉至首頁
+            }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -21,22 +27,19 @@ namespace WebApplication2
 
             string passowrd = this.TextBox2.Text;
 
-            bool acc = DB.confirmAcc(account);
+            bool logined = LoginHelper.tryLogin(account, passowrd); 
 
-            bool pw = DB.confirmPw(passowrd);
-
-            if(acc == false && pw == false)
+            if (logined) //如果登入成功跳轉至首頁
             {
                 string targetUrl =
-                    "~/homepage.aspx?User=" + this.TextBox1.Text;
+                    "~/homepage.aspx?User=" + LoginHelper.GetUserName();
 
                 Response.Redirect(targetUrl);
             }
-            else
+            else //失敗跳出錯誤訊息
             {
                 this.Label1.Visible = true;
             }
-
         }
     }
 }

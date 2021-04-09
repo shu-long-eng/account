@@ -37,7 +37,7 @@ namespace WebApplication2
                 return false;
             }
 
-            string DBpwd = dt.Rows[0].Field<string>("passoword");
+            string DBpwd = dt.Rows[0].Field<string>("password");
             string DBName = dt.Rows[0].Field<string>("Name");
 
             bool isPasswordRight = string.Compare(DBpwd, password.Trim()) == 0;
