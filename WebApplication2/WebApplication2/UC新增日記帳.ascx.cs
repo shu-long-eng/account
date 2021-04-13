@@ -66,20 +66,39 @@ namespace WebApplication2
                     return;
                 }
 
-                DB.insertDB(date, sub, usefor, money, OutIn);  
+                DB.insertDB(date, sub, usefor, money, OutIn);
+                Response.Write("<Script language='JavaScript'>alert('新增成功');</Script>");
             }
             else
             {
                 Response.Write("<Script language='JavaScript'>alert('欄位不可空白');</Script>");
             }
-       
+            
         }
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            this.DropDownList2.Items.Add(this.NewSub.Text);
+            if(this.NewSub.Text != "")
+            {
+                
 
-            DB.AddSubList(this.NewSub.Text);
+                if (DB.AddSubList(this.NewSub.Text))
+                {
+                    this.DropDownList2.Items.Add(this.NewSub.Text);
+                    Response.Write("<Script language='JavaScript'>alert('新增成功');</Script>");
+                }
+                else
+                {
+                    Response.Write("<Script language='JavaScript'>alert('已有相同項目');</Script>");
+                }
+
+            }
+            else
+            {
+                Response.Write("<Script language='JavaScript'>alert('欄位不可空白');</Script>");
+            }
+
+           
         }
 
         

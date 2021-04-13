@@ -28,13 +28,16 @@
        #addSub{
            margin-left:550px;
        }
+       #confirmSub{
+            margin-left:550px;
+       }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <uc1:UC新增日記帳 runat="server" id="UC新增日記帳" /> <%--使用者控制項--%>
     <div id="content">
         <div id="insert"><button type="button" data-target="#myModal" data-toggle="modal" id="btn" class="btn btn-primary">新增資料</button></div>
-        <table id="myDataTalbe">
+        <table id="myDataTalbe"  class="table table-striped table-hover">
             <thead>
                 <tr>
                     <th>No</th>
@@ -59,8 +62,8 @@
                             <td><%#Eval("IncomeAndExpenditure") %></td>
                             <td><%#Eval("Total") %></td>
                             <td>
-                                <asp:Button ID="Button1" runat="server" Text="修改" commandName="EditItem" CommandArgument='<%# Eval("ID") %>' OnClientClick=""/>               
-                                <asp:Button　data-target="#myModal" data-toggle="modal" ID="Button2" runat="server" Text="刪除" commandName="deleteItem" CommandArgument='<%# Eval("ID") %>' OnClientClick="if (confirm('確定執行嗎？')==false){return false;}"/>
+                                <asp:Button ID="Button1" runat="server" Text="修改" commandName="EditItem" CommandArgument='<%# Eval("ID") %>' class="btn btn-warning"/>               
+                                <asp:Button　data-target="#myModal" data-toggle="modal" ID="Button2" runat="server" Text="刪除" class="btn btn-danger" commandName="deleteItem" CommandArgument='<%# Eval("ID") %>' OnClientClick="if (confirm('確定執行嗎？')==false){return false;}"/>
                                 
                             </td>
                     </ItemTemplate>

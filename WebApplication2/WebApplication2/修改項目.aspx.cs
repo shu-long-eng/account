@@ -55,35 +55,28 @@ namespace WebApplication2
 
             int newtotal1 = newTotal.UpdateTotal(OutIn, newOutIn, money, newmoney, total);
 
-           
-
-            if(!DB.UpdateDB(GetId,newdate, newsub, newusefor, newmoney, newOutIn, newtotal1))
-                {
-                    Response.Write("<Script language='JavaScript'>alert('餘額不可為負數');</Script>");
-                    return;
-                }
-
-
-                if(!DB.NewBalance(total, newtotal1, GetId))
+                if (!DB.UpdateDB(GetId,newdate, newsub, newusefor, newmoney, newOutIn, newtotal1) || !DB.NewBalance(total, newtotal1, GetId))
                 {
                     Response.Write("<Script language='JavaScript'>alert('餘額不可為負數');</Script>");
                     return;
                 }
                
+               Response.Write("<Script language='JavaScript'>alert('修改完成');</Script>");
 
-
-             Response.Redirect("~/現金日記帳.aspx");
+               Response.Write("<Script language='JavaScript'>window.location.href = '現金日記帳.aspx';</Script>");
 
             }
             else
             {
                 Response.Write("<Script language='JavaScript'>alert('欄位不可空白');</Script>");
             }
-
+          
         }
 
         protected void Button2_Click(object sender, EventArgs e)
         {
+            
+
             Response.Redirect("~/現金日記帳.aspx");
         }
     }

@@ -86,7 +86,7 @@ namespace WebApplication2
         }
         public static DataTable showTotalDB()
         {
-            string querystring = @"SELECT  * from Assets;";
+            string querystring = @"SELECT  * from Assets where not [Isdelete] = 'true';";
 
             using (SqlConnection con = new SqlConnection(connectionstring))
             {
@@ -117,10 +117,10 @@ namespace WebApplication2
         }
         public static void insertDB(string date, string sub, string usefor, int? money, string outIn)
         {
-            string queryTotalMoney = @"select top 1 [Total] from [Assets] order by [ID] desc ;";
+            string queryTotalMoney = @"select top 1 [Total] from [Assets] where isdelete = 'false' order by [ID] desc;";
 
-            string querystr = @"insert into Assets (Date,Sub,Usefor,Money,[IncomeAndExpenditure],Total)
-                        values (@date,@sub,@usefor,@money,@outIn,@total);";
+            string querystr = @"insert into Assets (Date,Sub,Usefor,Money,[IncomeAndExpenditure],Total,[IsDelete])
+                        values (@date,@sub,@usefor,@money,@outIn,@total,'false');";
             using (SqlConnection con = new SqlConnection(connectionstring))
             {
                 SqlCommand command = new SqlCommand(querystr, con);
@@ -181,18 +181,32 @@ namespace WebApplication2
         }
         public static void deleteDB(string id)
         {
-            //string querystr = @"update assets set [delete] = 1 where ID = @id;";
+            string querystr = @"update assets set [IsDelete] = 'true' where ID = @id;
+                                select * from assets where ID=@id;";
 
-           string querystr = @"delete Assets where ID=@ID;";
+            string newTotal;
+           //string querystr = @"delete Assets where ID=@ID;";
 
             using (SqlConnection con = new SqlConnection(connectionstring))
             {
                 SqlCommand command = new SqlCommand(querystr, con);
                 command.Parameters.AddWithValue("@ID", id);
-
+                
+                
+                
                 try
                 {
                     con.Open();
+
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    DataTable dt = new DataTable();
+
+                    dt.Load(reader);
+
+                    string outIn = dt.Rows[0].Field<string>("IncomeAndExpenditure");
+
+                    int money = dt.Rows[0].Field<int>("Money");
 
                     command.ExecuteNonQuery();
 
@@ -236,7 +250,7 @@ namespace WebApplication2
         public static bool UpdateDB(string id,string date, string sub, string usefor, int money, string outIn, int total)
         {
             string querystr = @"update [Assets] set Date = @date, Sub = @sub, Usefor = @usefor, 
-                                Money = @money, IncomeAndExpenditure = @outIn, Total = @total where ID = @id;";
+                                Money = @money, IncomeAndExpenditure = @outIn, Total = @total where ID = @id and isdelete = 'false';"; //20210413 修改
             using(SqlConnection con = new SqlConnection(connectionstring))
             {
                 SqlCommand command = new SqlCommand(querystr, con);
@@ -299,7 +313,7 @@ namespace WebApplication2
 
                     if(outIn == "收入")
                     {
-                        NewQuery = "update Assets set total = total - @money where ID > @ID;";
+                        NewQuery = "update Assets set total = total - @money where ID > @ID and not [IsDelete] = 'true';";
 
                         SqlCommand Newcommand = new SqlCommand(NewQuery, con);
 
@@ -311,7 +325,7 @@ namespace WebApplication2
                     }
                     else
                     {
-                        NewQuery = "update Assets set total = total + @money where ID > @ID;";
+                        NewQuery = "update Assets set total = total + @money where ID > @ID and not [IsDelete] = 'true';";
 
                         SqlCommand Newcommand = new SqlCommand(NewQuery, con);
 
@@ -436,23 +450,46 @@ namespace WebApplication2
                 }
             }
         }
-        public static void AddSubList(string sub)
+        public static bool AddSubList(string sub)
         {
             string querystring = @"insert into SubList (Sublist) values (@sub);";
+
+            string check = @"select SubList from SubList where SubList = @sub";
 
             using(SqlConnection con = new SqlConnection(connectionstring))
             {
                 SqlCommand command = new SqlCommand(querystring, con);
+                SqlCommand commandCheck = new SqlCommand(check, con);
                 command.Parameters.AddWithValue("@sub", sub);
-
+                commandCheck.Parameters.AddWithValue("@sub", sub);
                 try
                 {
                     con.Open();
 
-                    command.ExecuteNonQuery();
+                    SqlDataReader reader = commandCheck.ExecuteReader();
+
+                    DataTable dt = new DataTable();
+
+                    dt.Load(reader);
+
+                    reader.Close();
+
+                    if (dt.Rows.Count > 0)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        command.ExecuteNonQuery();
+                        return true;
+                    }
+
+                    
                 }catch(Exception e)
                 {
                     HttpContext.Current.Response.Write(e);
+
+                    return false;
                 }
             }
         }

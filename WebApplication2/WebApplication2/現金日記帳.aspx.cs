@@ -14,8 +14,8 @@ namespace WebApplication2
         public string modalID { get; set; }
         protected void Page_init(object sender, EventArgs e)
         {
-            string DBName = "Assets";
-            this.Repeater1.DataSource = DB.ShowDataTable(DBName);
+            //string DBName = "Assets";
+            this.Repeater1.DataSource = DB.showTotalDB();
             this.Repeater1.DataBind();
         }
         protected void Page_Load(object sender, EventArgs e)
@@ -31,7 +31,7 @@ namespace WebApplication2
         protected void Page_PreRender(object sender, EventArgs e)
         {
             string DBName = "Assets";
-            this.Repeater1.DataSource = DB.ShowDataTable(DBName);
+            this.Repeater1.DataSource = DB.showTotalDB();
             this.Repeater1.DataBind();
            
         }

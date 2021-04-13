@@ -73,7 +73,28 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">否</button>
-                        <asp:Button ID="Button2" runat="server" Text="新增" class="btn btn-primary" OnClick="Button2_Click"/>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmSub">新增</button>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+ <%--新增科目是否新增確認框--%>
+<div class="modal fade modal-sm" id="confirmSub" role="dialog" data-backdrop="static" >
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="modal-title">
+                            確認
+                        </div>
+                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        是否要新增資料
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">否</button>
+                        <asp:Button ID="Button3" runat="server" Text="是" class="btn btn-primary" OnClick="Button2_Click" />
                     </div>
                 </div>
             </div>
