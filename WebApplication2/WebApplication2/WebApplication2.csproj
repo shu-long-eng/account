@@ -162,6 +162,7 @@
     <Content Include="UC新增日記帳.ascx" />
     <Content Include="UC新增現金日記帳.ascx" />
     <Content Include="修改項目.aspx" />
+    <Content Include="現金分析表\現金分析表.aspx" />
     <Content Include="現金日記帳.aspx" />
     <Content Include="發票總攬.aspx" />
     <Content Include="API\Handler1.ashx" />
@@ -327,6 +328,15 @@
     <Compile Include="修改項目.aspx.designer.cs">
       <DependentUpon>修改項目.aspx</DependentUpon>
     </Compile>
+    <Compile Include="現金分析表\DB現金分析表.cs" />
+    <Compile Include="現金分析表\月份金額.cs" />
+    <Compile Include="現金分析表\現金分析表.aspx.cs">
+      <DependentUpon>現金分析表.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="現金分析表\現金分析表.aspx.designer.cs">
+      <DependentUpon>現金分析表.aspx</DependentUpon>
+    </Compile>
     <Compile Include="現金日記帳.aspx.cs">
       <DependentUpon>現金日記帳.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -367,7 +377,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="NewFolder1\" />
     <Folder Include="外部文件\" />
   </ItemGroup>
   <ItemGroup>
