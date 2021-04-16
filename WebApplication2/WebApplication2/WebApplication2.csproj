@@ -160,7 +160,6 @@
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="UCReceiptList.ascx" />
     <Content Include="UC新增日記帳.ascx" />
-    <Content Include="UC新增現金日記帳.ascx" />
     <Content Include="修改項目.aspx" />
     <Content Include="現金分析表\現金分析表.aspx" />
     <Content Include="現金日記帳.aspx" />
@@ -313,13 +312,6 @@
     </Compile>
     <Compile Include="UC新增日記帳.ascx.designer.cs">
       <DependentUpon>UC新增日記帳.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="UC新增現金日記帳.ascx.cs">
-      <DependentUpon>UC新增現金日記帳.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UC新增現金日記帳.ascx.designer.cs">
-      <DependentUpon>UC新增現金日記帳.ascx</DependentUpon>
     </Compile>
     <Compile Include="修改項目.aspx.cs">
       <DependentUpon>修改項目.aspx</DependentUpon>

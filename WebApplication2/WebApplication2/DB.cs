@@ -115,12 +115,12 @@ namespace WebApplication2
             }
 
         }
-        public static void insertDB(string date, string sub, string usefor, int? money, string outIn)
+        public static void insertDB(string date, string sub, string usefor, int? money, string outIn, int subID)
         {
             string queryTotalMoney = @"select top 1 [Total] from [Assets] where isdelete = 'false' order by [ID] desc;";
 
-            string querystr = @"insert into Assets (Date,Sub,Usefor,Money,[IncomeAndExpenditure],Total,[IsDelete])
-                        values (@date,@sub,@usefor,@money,@outIn,@total,'false');";
+            string querystr = @"insert into Assets (Date,Sub,Usefor,Money,[IncomeAndExpenditure],Total,[IsDelete],SubID)
+                        values (@date,@sub,@usefor,@money,@outIn,@total,'false',@subID);";
             using (SqlConnection con = new SqlConnection(connectionstring))
             {
                 SqlCommand command = new SqlCommand(querystr, con);
@@ -165,7 +165,7 @@ namespace WebApplication2
                     command.Parameters.AddWithValue("@money",money);
                     command.Parameters.AddWithValue("@outIn", outIn);
                     command.Parameters.AddWithValue("@total", total);
-                    
+                    command.Parameters.AddWithValue("@subID", subID);
                     command.ExecuteNonQuery();
                 }
                 catch(Exception e)

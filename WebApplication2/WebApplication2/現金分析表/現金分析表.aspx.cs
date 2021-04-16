@@ -24,7 +24,8 @@ namespace WebApplication2.現金分析表
 
             this.title.Text = this.yearSelect.SelectedValue;            //隨年份更改標題
 
-            
+            //this.Repeater1.DataSource = DB現金分析表.showSub();
+            //this.Repeater1.DataBind();
         }
 
         protected void yearSelect_SelectedIndexChanged(object sender, EventArgs e)
@@ -39,5 +40,7 @@ namespace WebApplication2.現金分析表
             this.monthBalance.DataSource = DB現金分析表.monthBalance(year);
             this.monthBalance.DataBind();
         }
+
+       
     }
 }

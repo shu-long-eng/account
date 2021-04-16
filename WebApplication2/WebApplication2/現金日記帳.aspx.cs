@@ -11,12 +11,12 @@ namespace WebApplication2
     public partial class 現金日記帳 : System.Web.UI.Page
     {
         public static string cmdArgu;
-        public string modalID { get; set; }
+        //public string modalID { get; set; }
         protected void Page_init(object sender, EventArgs e)
         {
-            //string DBName = "Assets";
-            this.Repeater1.DataSource = DB.showTotalDB();
-            this.Repeater1.DataBind();
+            
+            this.showMoneyList.DataSource = DB.showTotalDB();
+            this.showMoneyList.DataBind();
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -30,15 +30,15 @@ namespace WebApplication2
         }
         protected void Page_PreRender(object sender, EventArgs e)
         {
-            string DBName = "Assets";
-            this.Repeater1.DataSource = DB.showTotalDB();
-            this.Repeater1.DataBind();
+            
+            this.showMoneyList.DataSource = DB.showTotalDB();
+            this.showMoneyList.DataBind();
            
         }
 
         protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
-            string cmdName = e.CommandName;
+            string cmdName = e.CommandName; 
 
             cmdArgu = e.CommandArgument.ToString();
 

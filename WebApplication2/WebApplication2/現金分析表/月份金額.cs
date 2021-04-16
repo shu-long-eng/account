@@ -15,6 +15,11 @@ namespace WebApplication2.現金分析表
         {
             public int? balance { get; set; }
         }
+        public class subMoneyIn
+        {
+            public string subTypeIn { get; set; }
+            public int? moneyIn { get; set; }
+        }
 
 
     }

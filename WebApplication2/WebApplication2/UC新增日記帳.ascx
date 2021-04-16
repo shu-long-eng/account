@@ -14,14 +14,14 @@
                      </button>
                  </div>
                  <div class="modal-body">
-                     <p>日期: <asp:TextBox ID="TextBox1" runat="server" type="date"></asp:TextBox></p>
-                     <p>科目: <asp:DropDownList ID="DropDownList2" runat="server">
+                     <p>日期: <asp:TextBox ID="TextDate" runat="server" type="date"></asp:TextBox></p>
+                     <p>科目: <asp:DropDownList ID="DropDownListSub" runat="server">
                                    
                             </asp:DropDownList><button id="plusSub"  data-target="#addSub" data-toggle="modal" type="button"><i class="fas fa-plus-square"></i> 科目</button></p>
-                     <p id="textup">摘要: <asp:TextBox ID="TextBox3" runat="server" type="textarea"></asp:TextBox></p>
-                     <p>金額: <asp:TextBox class="text" ID="TextBox4" runat="server" onkeyup="value=value.replace(/[^\d]/g,'') " ></asp:TextBox></p>
+                     <p id="textup">摘要: <asp:TextBox ID="TextSummary" runat="server" type="textarea"></asp:TextBox></p>
+                     <p>金額: <asp:TextBox class="text" ID="TextMoney" runat="server" onkeyup="value=value.replace(/[^\d]/g,'') " ></asp:TextBox></p>
                      <p>收/支:
-                     <asp:DropDownList ID="DropDownList1" runat="server">
+                     <asp:DropDownList ID="DropDownList1OutIn" runat="server">
                          <asp:ListItem Value="收入">收入</asp:ListItem>
                          <asp:ListItem Value="支出">支出</asp:ListItem>
                      </asp:DropDownList>

@@ -2,7 +2,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
         #content{
-            margin-left:500px;
+            margin-left:300px;
+            width:75%;
         }
         
     </style>
@@ -64,8 +65,19 @@
                 </asp:Repeater>
             </tr>
 
+            <tr>
+                <td colspan="13" align="center">收入</td>
+            </tr>
 
-            
+
+            <%--<asp:Repeater ID="Repeater1" runat="server" OnItemDataBound="Repeater1_ItemDataBound">
+                <ItemTemplate>
+                    <tr>
+                        <td><%# Eval("SubList")  %></td>
+                        <asp:Repeater ID="Repeater2" runat="server"><ItemTemplate><td><%# Eval("balance")  %></td></ItemTemplate></asp:Repeater>
+                    </tr>
+                </ItemTemplate>
+            </asp:Repeater>--%>
 
 
 

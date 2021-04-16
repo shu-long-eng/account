@@ -9,7 +9,7 @@
 
     <style>
         #content{
-            margin-top:85px;
+            margin-bottom:10px;
             margin-left:300px;
             width:1100px;
         }
@@ -31,11 +31,17 @@
        #confirmSub{
             margin-left:550px;
        }
+      .jumbotron{
+          padding-top:10px;
+          padding-bottom:10px;
+          margin-bottom:5px;
+      }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div class="jumbotron"><h1 class="display-4">現金日記帳</h1></div>
     <uc1:UC新增日記帳 runat="server" id="UC新增日記帳" /> <%--使用者控制項--%>
-    <div id="content">
+    <div id="content" class="jumbotron">
         <div id="insert"><button type="button" data-target="#myModal" data-toggle="modal" id="btn" class="btn btn-primary">新增資料</button></div>
         <table id="myDataTalbe"  class="table table-striped table-hover">
             <thead>
@@ -51,7 +57,7 @@
                 </tr>
             </thead>
             <tbody>
-                <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
+                <asp:Repeater ID="showMoneyList" runat="server" OnItemCommand="Repeater1_ItemCommand">
                     <ItemTemplate>
                         <tr>
                             <td><%#Eval("ID") %></td>
@@ -63,7 +69,7 @@
                             <td><%#Eval("Total") %></td>
                             <td>
                                 <asp:Button ID="Button1" runat="server" Text="修改" commandName="EditItem" CommandArgument='<%# Eval("ID") %>' class="btn btn-warning"/>               
-                                <asp:Button　data-target="#myModal" data-toggle="modal" ID="Button2" runat="server" Text="刪除" class="btn btn-danger" commandName="deleteItem" CommandArgument='<%# Eval("ID") %>' OnClientClick="if (confirm('確定執行嗎？')==false){return false;}"/>
+                                <asp:Button　data-target="#myModal" data-toggle="modal" ID="Button2" runat="server" Text="刪除" class="btn btn-danger" commandName="deleteItem" CommandArgument='<%# Eval("ID") %>' OnClientClick="return confirm('是否刪除項目？')"/>
                                 
                             </td>
                     </ItemTemplate>
