@@ -154,7 +154,7 @@ namespace WebApplication2.現金分析表
                 }
             }
         }
-        public static List<subMoneyIn> subMoneyIn(int year)
+        public static List<subMoneyIn> subMoneyIn(int year, string outIn)
         {
             // string querystringTotal = @"select Sum(Money) as money,subid from assets where [date] like @date and not IsDelete = 'true' and IncomeAndExpenditure ='收入' group by SubID;";
             string querystringSubList = @"select count(SubList) from SubList;";
@@ -189,8 +189,9 @@ namespace WebApplication2.現金分析表
 
                             for (int y = 1; y <= month; y++)
                             {
-                                string querystringTotal = @"select Sum(Money) as money from assets where date like @date and sub = @sub and not IsDelete = 'true' and IncomeAndExpenditure ='收入';";
+                                string querystringTotal = @"select Sum(Money) as money from assets where date like @date and sub = @sub and not IsDelete = 'true' and IncomeAndExpenditure = @outIn;";
                                 SqlCommand cmdTotal = new SqlCommand(querystringTotal, con);
+                                cmdTotal.Parameters.AddWithValue("@outIn", outIn);
                                 cmdTotal.Parameters.AddWithValue("@sub", sub);
 
                                 string mon;
@@ -213,24 +214,28 @@ namespace WebApplication2.現金分析表
                                 SubArr[y-1] = SubMoneyTotal;
                             }
 
+                            if(SubArr[0]!=0 || SubArr[1] != 0 || SubArr[2] != 0 || SubArr[3] != 0 || SubArr[4] != 0 ||
+                               SubArr[5] != 0 || SubArr[6] != 0 || SubArr[7] != 0 || SubArr[8] != 0 || SubArr[9] != 0 ||
+                               SubArr[10] != 0 || SubArr[11] != 0) { 
+
                             subMoneyInceome.Add(new subMoneyIn
                             {
-                                subTypeIn = sub,
-                                JanIn = SubArr[0],
-                                FebIn = SubArr[1],
-                                MarIn = SubArr[2],
-                                AprIn = SubArr[3],
-                                MayIn = SubArr[4],
-                                JunIn = SubArr[5],
-                                JulIn = SubArr[6],
-                                AugIn = SubArr[7],
-                                SepIn = SubArr[8],
-                                OctIn = SubArr[9],
-                                NovIn = SubArr[10],
-                                DecIn = SubArr[11]
+                                subType = sub,
+                                Jan = SubArr[0],
+                                Feb = SubArr[1],
+                                Mar = SubArr[2],
+                                Apr = SubArr[3],
+                                May = SubArr[4],
+                                Jun = SubArr[5],
+                                Jul = SubArr[6],
+                                Aug = SubArr[7],
+                                Sep = SubArr[8],
+                                Oct = SubArr[9],
+                                Nov = SubArr[10],
+                                Dec = SubArr[11]
                             });
 
-
+                            }
                         }
                         else
                         {

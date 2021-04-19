@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="現金分析表.aspx.cs" Inherits="WebApplication2.現金分析表.WebForm1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    
     <style>
         #content{
             margin-left:300px;
@@ -20,8 +21,8 @@
         <asp:ListItem Value="2024">2024</asp:ListItem>
     </asp:DropDownList><span>年</span>
     <br />
-    <button type="button" class="btn btn-success">匯出EXCEL</button>
-    <table class="table table-bordered table-hover table-striped">
+    <button type="button" class="btn btn-success" onclick="fnExcelReport()">匯出EXCEL</button>
+    <table class="table table-bordered table-hover table-striped" id="MoneyList">
         <thead>
             <tr>
                 <th>項目</th>
@@ -72,20 +73,48 @@
             <asp:Repeater ID="MonthSubIncome" runat="server">
                 <ItemTemplate>
                     <tr>
-                        <td><%# Eval("subTypeIn")  %></td>
-                        <td><%# Eval("JanIn")  %></td>
-                        <td><%# Eval("FebIn")  %></td>
-                        <td><%# Eval("MarIn")  %></td>
-                        <td><%# Eval("AprIn")  %></td>
-                        <td><%# Eval("MayIn")  %></td>
-                        <td><%# Eval("JunIn")  %></td>
-                        <td><%# Eval("JulIn")  %></td>
-                        <td><%# Eval("AugIn")  %></td>
-                        <td><%# Eval("SepIn")  %></td>
-                        <td><%# Eval("OctIn")  %></td>
-                        <td><%# Eval("NovIn")  %></td>
-                        <td><%# Eval("DecIn")  %></td>
+                        <td><%# Eval("subType")  %></td>
+                        <td><%# Eval("Jan")  %></td>
+                        <td><%# Eval("Feb")  %></td>
+                        <td><%# Eval("Mar")  %></td>
+                        <td><%# Eval("Apr")  %></td>
+                        <td><%# Eval("May")  %></td>
+                        <td><%# Eval("Jun")  %></td>
+                        <td><%# Eval("Jul")  %></td>
+                        <td><%# Eval("Aug")  %></td>
+                        <td><%# Eval("Sep")  %></td>
+                        <td><%# Eval("Oct")  %></td>
+                        <td><%# Eval("Nov")  %></td>
+                        <td><%# Eval("Dec")  %></td>
                     </tr>
+
+
+                </ItemTemplate>
+            </asp:Repeater>
+
+            <tr>
+                <td colspan="13" align="center">支出</td>
+            </tr>
+
+            <asp:Repeater ID="MonthSubEx" runat="server">
+                <ItemTemplate>
+                    <tr>
+                        <td><%# Eval("subType")  %></td>
+                        <td><%# Eval("Jan")  %></td>
+                        <td><%# Eval("Feb")  %></td>
+                        <td><%# Eval("Mar")  %></td>
+                        <td><%# Eval("Apr")  %></td>
+                        <td><%# Eval("May")  %></td>
+                        <td><%# Eval("Jun")  %></td>
+                        <td><%# Eval("Jul")  %></td>
+                        <td><%# Eval("Aug")  %></td>
+                        <td><%# Eval("Sep")  %></td>
+                        <td><%# Eval("Oct")  %></td>
+                        <td><%# Eval("Nov")  %></td>
+                        <td><%# Eval("Dec")  %></td>
+                    </tr>
+
+
                 </ItemTemplate>
             </asp:Repeater>
 
@@ -96,17 +125,7 @@
 
 
 
-
-            <%--<asp:Repeater ID="Repeater1" runat="server" OnItemDataBound="Repeater1_ItemDataBound">
-                <ItemTemplate>
-                    <tr>
-                        <td><%# Eval("SubList")  %></td>
-                        <asp:Repeater ID="Repeater2" runat="server"><ItemTemplate><td><%# Eval("balance")  %></td></ItemTemplate></asp:Repeater>
-                    </tr>
-                </ItemTemplate>
-            </asp:Repeater>--%>
-
-
+            
 
 
         </tbody>
@@ -114,5 +133,39 @@
 </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
-   
+   <script>
+       
+           function fnExcelReport() {
+               var tab_text = "<table border='2px'><tr bgcolor='#87AFC6'>";
+               var textRange; var j = 0;
+               tab = document.getElementById('MoneyList'); // id of table
+
+               for (j = 0; j < tab.rows.length; j++) {
+                   tab_text = tab_text + tab.rows[j].innerHTML + "</tr>";
+                   //tab_text=tab_text+"</tr>";
+               }
+
+               tab_text = tab_text + "</table>";
+               tab_text = tab_text.replace(/<A[^>]*>|<\/A>/g, "");//remove if u want links in your table
+               tab_text = tab_text.replace(/<img[^>]*>/gi, ""); // remove if u want images in your table
+               tab_text = tab_text.replace(/<input[^>]*>|<\/input>/gi, ""); // reomves input params
+
+               var ua = window.navigator.userAgent; //檢測瀏覽器
+               var msie = ua.indexOf("MSIE ");
+
+               if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))      // If Internet Explorer
+               {
+                   txtArea1.document.open("txt/html", "replace");
+                   txtArea1.document.write(tab_text);
+                   txtArea1.document.close();
+                   txtArea1.focus();
+                   sa = txtArea1.document.execCommand("SaveAs", true, "Say Thanks to Sumit.xls");
+               }
+               else                 //other browser not tested on IE 11
+                   sa = window.open('data:application/vnd.ms-excel,' + encodeURIComponent(tab_text));
+
+               return (sa);
+           } 
+       
+   </script>
 </asp:Content>

@@ -24,7 +24,10 @@ namespace WebApplication2.現金分析表
 
             this.title.Text = this.yearSelect.SelectedValue;            //隨年份更改標題
 
-            this.MonthSubIncome.DataSource = DB現金分析表.subMoneyIn(year);
+            this.MonthSubIncome.DataSource = DB現金分析表.subMoneyIn(year,"收入");
+            this.DataBind();
+
+            this.MonthSubEx.DataSource = DB現金分析表.subMoneyIn(year, "支出");
             this.DataBind();
 
             //this.Repeater1.DataSource = DB現金分析表.showSub();
