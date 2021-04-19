@@ -154,10 +154,102 @@ namespace WebApplication2.現金分析表
                 }
             }
         }
-        //public static List<subMoney> subMoney()
-        //{
-        //    string querystring = @"select SubList from SubList;
-        //                           select money from assets";
-        //}
+        public static List<subMoneyIn> subMoneyIn(int year)
+        {
+            // string querystringTotal = @"select Sum(Money) as money,subid from assets where [date] like @date and not IsDelete = 'true' and IncomeAndExpenditure ='收入' group by SubID;";
+            string querystringSubList = @"select count(SubList) from SubList;";
+
+            string showSubLIst = @"select [SubList] from [SubList];";
+
+            using (SqlConnection con = new SqlConnection(connectionstring))
+            {
+                SqlCommand cmdSubCount = new SqlCommand(querystringSubList, con);
+                SqlCommand cmdShow = new SqlCommand(showSubLIst, con);
+                try
+                {
+                    con.Open();
+
+                    int SubCount = (int)cmdSubCount.ExecuteScalar();
+
+                    List<subMoneyIn> subMoneyInceome = new List<subMoneyIn>();
+
+                    int?[] SubArr = new int?[month];
+
+                    for (int i = 0; i < SubCount; i++)
+                    {
+                        SqlDataReader SubReader = cmdShow.ExecuteReader();
+                        DataTable SubDt = new DataTable();
+                        SubDt.Load(SubReader);
+                        SubReader.Close();
+
+                        string sub = SubDt.Rows[i].Field<string>("SubList");
+
+                        if (sub != null)
+                        {
+
+                            for (int y = 1; y <= month; y++)
+                            {
+                                string querystringTotal = @"select Sum(Money) as money from assets where date like @date and sub = @sub and not IsDelete = 'true' and IncomeAndExpenditure ='收入';";
+                                SqlCommand cmdTotal = new SqlCommand(querystringTotal, con);
+                                cmdTotal.Parameters.AddWithValue("@sub", sub);
+
+                                string mon;
+                                if (y < 10)//如果月份小於10在數字前面加一個"-0"，在最後加入"%"代表SQL的模糊查詢語法  (資料庫存入的格式為yyyy-MM-dd)
+                                {
+                                    mon = "-0" + y.ToString() + "%";
+                                }
+                                else
+                                {
+                                    mon = "-" + y.ToString() + "%"; //大於零在數字前面加一個"-"，在最後加入"%"代表SQL的模糊查詢語法
+                                }
+
+                                string date = year + mon;
+                                cmdTotal.Parameters.AddWithValue("@date", date);
+
+                                int? SubMoneyTotal = cmdTotal.ExecuteScalar() as int?;
+
+                                if(SubMoneyTotal == null) { SubMoneyTotal = 0; }
+
+                                SubArr[y-1] = SubMoneyTotal;
+                            }
+
+                            subMoneyInceome.Add(new subMoneyIn
+                            {
+                                subTypeIn = sub,
+                                JanIn = SubArr[0],
+                                FebIn = SubArr[1],
+                                MarIn = SubArr[2],
+                                AprIn = SubArr[3],
+                                MayIn = SubArr[4],
+                                JunIn = SubArr[5],
+                                JulIn = SubArr[6],
+                                AugIn = SubArr[7],
+                                SepIn = SubArr[8],
+                                OctIn = SubArr[9],
+                                NovIn = SubArr[10],
+                                DecIn = SubArr[11]
+                            });
+
+
+                        }
+                        else
+                        {
+                            continue;
+                        }
+
+                    }
+
+
+
+                    return subMoneyInceome;
+
+                }
+                catch (Exception e)
+                {
+                    HttpContext.Current.Response.Write(e);
+                    return null;
+                }
+            }
+        }
     }
 }

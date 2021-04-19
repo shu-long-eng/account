@@ -69,6 +69,33 @@
                 <td colspan="13" align="center">收入</td>
             </tr>
 
+            <asp:Repeater ID="MonthSubIncome" runat="server">
+                <ItemTemplate>
+                    <tr>
+                        <td><%# Eval("subTypeIn")  %></td>
+                        <td><%# Eval("JanIn")  %></td>
+                        <td><%# Eval("FebIn")  %></td>
+                        <td><%# Eval("MarIn")  %></td>
+                        <td><%# Eval("AprIn")  %></td>
+                        <td><%# Eval("MayIn")  %></td>
+                        <td><%# Eval("JunIn")  %></td>
+                        <td><%# Eval("JulIn")  %></td>
+                        <td><%# Eval("AugIn")  %></td>
+                        <td><%# Eval("SepIn")  %></td>
+                        <td><%# Eval("OctIn")  %></td>
+                        <td><%# Eval("NovIn")  %></td>
+                        <td><%# Eval("DecIn")  %></td>
+                    </tr>
+                </ItemTemplate>
+            </asp:Repeater>
+
+
+
+
+
+
+
+
 
             <%--<asp:Repeater ID="Repeater1" runat="server" OnItemDataBound="Repeater1_ItemDataBound">
                 <ItemTemplate>

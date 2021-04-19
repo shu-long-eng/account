@@ -24,6 +24,9 @@ namespace WebApplication2.現金分析表
 
             this.title.Text = this.yearSelect.SelectedValue;            //隨年份更改標題
 
+            this.MonthSubIncome.DataSource = DB現金分析表.subMoneyIn(year);
+            this.DataBind();
+
             //this.Repeater1.DataSource = DB現金分析表.showSub();
             //this.Repeater1.DataBind();
         }
@@ -31,14 +34,7 @@ namespace WebApplication2.現金分析表
         protected void yearSelect_SelectedIndexChanged(object sender, EventArgs e)
         {
             int year = Convert.ToInt32(this.yearSelect.SelectedValue);
-            this.monthIncome.DataSource = DB現金分析表.monthTotalOutIn(year,"收入");
-            this.monthIncome.DataBind();
-
-            this.monthExpenditure.DataSource = DB現金分析表.monthTotalOutIn(year, "支出");
-            this.monthExpenditure.DataBind();
-
-            this.monthBalance.DataSource = DB現金分析表.monthBalance(year);
-            this.monthBalance.DataBind();
+            
         }
 
        
