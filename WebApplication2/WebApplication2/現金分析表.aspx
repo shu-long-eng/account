@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="現金分析表.aspx.cs" Inherits="WebApplication2.現金分析表.WebForm1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    
+    <script src="TableExport/table2excel.js"></script>
+
     <style>
         #content{
             margin-left:300px;
@@ -21,7 +22,7 @@
         <asp:ListItem Value="2024">2024</asp:ListItem>
     </asp:DropDownList><span>年</span>
     <br />
-    <button type="button" class="btn btn-success" onclick="fnExcelReport()">匯出EXCEL</button>
+    <button type="button" class="btn btn-success" id="mybtn">匯出EXCEL</button>
     <table class="table table-bordered table-hover table-striped" id="MoneyList">
         <thead>
             <tr>
@@ -135,37 +136,13 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
    <script>
        
-           function fnExcelReport() {
-               var tab_text = "<table border='2px'><tr bgcolor='#87AFC6'>";
-               var textRange; var j = 0;
-               tab = document.getElementById('MoneyList'); // id of table
+          
 
-               for (j = 0; j < tab.rows.length; j++) {
-                   tab_text = tab_text + tab.rows[j].innerHTML + "</tr>";
-                   //tab_text=tab_text+"</tr>";
-               }
+       document.getElementById("mybtn").addEventListener('click', function () {
+           var table2excel = new Table2Excel();
+           table2excel.export(document.querySelectorAll("#MoneyList"));
+       });
 
-               tab_text = tab_text + "</table>";
-               tab_text = tab_text.replace(/<A[^>]*>|<\/A>/g, "");//remove if u want links in your table
-               tab_text = tab_text.replace(/<img[^>]*>/gi, ""); // remove if u want images in your table
-               tab_text = tab_text.replace(/<input[^>]*>|<\/input>/gi, ""); // reomves input params
-
-               var ua = window.navigator.userAgent; //檢測瀏覽器
-               var msie = ua.indexOf("MSIE ");
-
-               if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))      // If Internet Explorer
-               {
-                   txtArea1.document.open("txt/html", "replace");
-                   txtArea1.document.write(tab_text);
-                   txtArea1.document.close();
-                   txtArea1.focus();
-                   sa = txtArea1.document.execCommand("SaveAs", true, "Say Thanks to Sumit.xls");
-               }
-               else                 //other browser not tested on IE 11
-                   sa = window.open('data:application/vnd.ms-excel,' + encodeURIComponent(tab_text));
-
-               return (sa);
-           } 
        
    </script>
 </asp:Content>

@@ -10,18 +10,19 @@ namespace WebApplication2
 {
     public partial class 現金日記帳 : System.Web.UI.Page
     {
-        public static string cmdArgu;
-        //public string modalID { get; set; }
+        //public static string cmdArgu;
+       
         protected void Page_init(object sender, EventArgs e)
         {
-            
-            this.showMoneyList.DataSource = DB.showTotalDB();
+            string DBName = "Assets";
+            this.showMoneyList.DataSource = DB.showTotalDB(DBName);
             this.showMoneyList.DataBind();
+
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            
 
+           
         }
 
         protected void Button3_Click(object sender, EventArgs e)
@@ -30,21 +31,21 @@ namespace WebApplication2
         }
         protected void Page_PreRender(object sender, EventArgs e)
         {
-            
-            this.showMoneyList.DataSource = DB.showTotalDB();
+            string DBName = "Assets";
+            this.showMoneyList.DataSource = DB.showTotalDB(DBName);
             this.showMoneyList.DataBind();
-           
+
         }
 
         protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
             string cmdName = e.CommandName; 
 
-            cmdArgu = e.CommandArgument.ToString();
+            string cmdArgu = e.CommandArgument.ToString();
 
             if ("deleteItem" == cmdName)
             {
-                DB.BeforeDelete(cmdArgu);
+                DB.BeforeDelete(cmdArgu); //還原該項目再刪除此項目前原本數值
 
                 DB.deleteDB(cmdArgu);
             }

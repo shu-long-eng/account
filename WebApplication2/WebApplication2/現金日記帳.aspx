@@ -12,9 +12,11 @@
             margin-bottom:10px;
             margin-left:300px;
             width:1100px;
+           
         }
         #insert{
             margin-bottom:20px;
+            
         }
         #confirm{
             margin-left:500px;
@@ -36,6 +38,7 @@
           padding-bottom:10px;
           margin-bottom:5px;
       }
+      
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -70,7 +73,6 @@
                             <td>
                                 <asp:Button ID="Button1" runat="server" Text="修改" commandName="EditItem" CommandArgument='<%# Eval("ID") %>' class="btn btn-warning"/>               
                                 <asp:Button　data-target="#myModal" data-toggle="modal" ID="Button2" runat="server" Text="刪除" class="btn btn-danger" commandName="deleteItem" CommandArgument='<%# Eval("ID") %>' OnClientClick="return confirm('是否刪除項目？')"/>
-                                
                             </td>
                     </ItemTemplate>
                 </asp:Repeater>
@@ -93,7 +95,6 @@
     <script type="text/javascript">
         $(function () {
             $("#myDataTalbe").DataTable({
-  
                 "order": [[0, "desc"]]
             });
         });
@@ -106,7 +107,7 @@
         }
             
 
-        $("#deleteCheck").modal('show');
+    /*    $("#deleteCheck").modal('show');*/
 
         
 
@@ -119,6 +120,10 @@
         });
 
        
+
+        
+
+
         
     </script>
 </asp:Content>

@@ -13,15 +13,20 @@
                     <p>功能表</p>
                     
                     <li class="list-group-item list-group-item-action list-group-item-primary">
-                        <a href="#">現金日記帳</a>
+                        <a href="現金日記帳.aspx">現金日記帳</a>
                     </li>
 
                     <li class="list-group-item list-group-item-action list-group-item-primary">
-                        <a href="#">現金分析表</a>
+                        <a href="現金分析表.aspx">現金分析表</a>
                     </li>
 
-                    <li class="list-group-item list-group-item-action list-group-item-primary">
-                        <a href="#">零用金管理</a>
+                    <li class="nav-item dropdown list-group-item list-group-item-action list-group-item-primary">
+                       <a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false" id ="CashMenu">稅務資料</a>
+                        <div class="dropdown-menu" aria-labelledby="CashMenu">
+                            <a class="dropdown-item" href="#">總攬</a>
+                            <a class="dropdown-item" href="#">零用金申請</a>
+                           
+                        </div>
                     </li>
 
                     <%--<li class="list-group-item list-group-item-action list-group-item-primary">
@@ -30,8 +35,8 @@
 
 
                     <li class="nav-item dropdown list-group-item list-group-item-action list-group-item-primary">
-                        <a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false" id ="myMenu">稅務資料</a>
-                        <div class="dropdown-menu" aria-labelledby="myMenu">
+                        <a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false" id ="TxtMenu">稅務資料</a>
+                        <div class="dropdown-menu" aria-labelledby="TxtMenu">
                             <a class="dropdown-item" href="#">總攬</a>
                             <a class="dropdown-item" href="#">銷項稅額</a>
                             <a class="dropdown-item" href="#">進項稅額</a>
@@ -48,3 +53,4 @@
                     </li>
 
                 </ul>
+     </div>
