@@ -14,7 +14,10 @@ namespace WebApplication2
 
         protected void Page_Load(object sender, EventArgs e)
         {
-           string User = Page.Request.QueryString["User"];
+            //string User = Page.Request.QueryString["User"];
+            string UserName = LoginHelper.GetUserName();
+            this.Label1.Text = UserName;
+
         }
 
         protected void Menu1_MenuItemClick(object sender, MenuEventArgs e)

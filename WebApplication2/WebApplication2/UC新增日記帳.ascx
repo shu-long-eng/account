@@ -18,8 +18,8 @@
                      <p>科目: <asp:DropDownList ID="DropDownListSub" runat="server">
                                    
                             </asp:DropDownList><button id="plusSub"  data-target="#addSub" data-toggle="modal" type="button"><i class="fas fa-plus-square"></i> 科目</button></p>
-                     <p id="textup">摘要: <asp:TextBox ID="TextSummary" runat="server" type="textarea"></asp:TextBox></p>
-                     <p>金額: <asp:TextBox class="text" ID="TextMoney" runat="server" onkeyup="value=value.replace(/[^\d]/g,'') " ></asp:TextBox></p>
+                     <p id="textup">摘要: <asp:TextBox ID="TextSummary" runat="server"  MaxLength="10"></asp:TextBox></p>
+                     <p>金額: <asp:TextBox class="text" ID="TextMoney" runat="server"  MaxLength="10" type="number" min="0" onkeyup="value=value.replace(/[^\d]/g,'') "></asp:TextBox></p>
                      <p>收/支:
                      <asp:DropDownList ID="DropDownList1OutIn" runat="server">
                          <asp:ListItem Value="收入">收入</asp:ListItem>

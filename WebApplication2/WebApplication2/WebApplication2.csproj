@@ -131,6 +131,7 @@
     <Content Include="CSS\CSS.css" />
     <Content Include="Global.asax" />
     <Content Include="navbar.aspx" />
+    <Content Include="NoPage.aspx" />
     <Content Include="photo\photo.png" />
     <Content Include="photo\歡迎BOSS.png" />
     <Content Include="photo\歡迎主管.png" />
@@ -162,11 +163,12 @@
     <Content Include="UCReceiptList.ascx" />
     <Content Include="UC新增日記帳.ascx" />
     <Content Include="修改項目.aspx" />
-    <Content Include="現金分析表.aspx" />
+    <Content Include="CashAnalysis.aspx" />
     <Content Include="現金日記帳.aspx" />
     <Content Include="發票總攬.aspx" />
     <Content Include="API\Handler1.ashx" />
     <Content Include="零用金表\CashListPage.aspx" />
+    <Content Include="零用金表\EditCash.aspx" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.1.js" />
     <Content Include="Scripts\jquery-3.5.1.min.js" />
@@ -259,9 +261,9 @@
       <DependentUpon>Handler1.ashx</DependentUpon>
     </Compile>
     <Compile Include="newTotal.cs" />
-    <Compile Include="DBAccount.cs" />
+    <Compile Include="DBManager\DBAccount.cs" />
     <Compile Include="LoginHelper.cs" />
-    <Compile Include="DB.cs" />
+    <Compile Include="DBManager\DB.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -271,6 +273,13 @@
     </Compile>
     <Compile Include="navbar.aspx.designer.cs">
       <DependentUpon>navbar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NoPage.aspx.cs">
+      <DependentUpon>NoPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NoPage.aspx.designer.cs">
+      <DependentUpon>NoPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="homepage.aspx.cs">
@@ -322,14 +331,14 @@
     <Compile Include="修改項目.aspx.designer.cs">
       <DependentUpon>修改項目.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DB現金分析表.cs" />
+    <Compile Include="DBManager\DBCashAnalysis.cs" />
     <Compile Include="月份金額.cs" />
-    <Compile Include="現金分析表.aspx.cs">
-      <DependentUpon>現金分析表.aspx</DependentUpon>
+    <Compile Include="CashAnalysis.aspx.cs">
+      <DependentUpon>CashAnalysis.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="現金分析表.aspx.designer.cs">
-      <DependentUpon>現金分析表.aspx</DependentUpon>
+    <Compile Include="CashAnalysis.aspx.designer.cs">
+      <DependentUpon>CashAnalysis.aspx</DependentUpon>
     </Compile>
     <Compile Include="現金日記帳.aspx.cs">
       <DependentUpon>現金日記帳.aspx</DependentUpon>
@@ -351,6 +360,13 @@
     </Compile>
     <Compile Include="零用金表\CashListPage.aspx.designer.cs">
       <DependentUpon>CashListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="零用金表\EditCash.aspx.cs">
+      <DependentUpon>EditCash.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="零用金表\EditCash.aspx.designer.cs">
+      <DependentUpon>EditCash.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

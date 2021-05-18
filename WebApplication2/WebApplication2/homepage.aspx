@@ -28,8 +28,8 @@
                 <uc1:ucNav runat="server" ID="ucNav" />
             </nav>
            <div>
-               <asp:Literal ID="Literal1" runat="server"></asp:Literal>
-               <h1 class="display-4"> 歡迎進入本系統</h1>
+               
+               <h1 class="display-4"><asp:Label ID="Label1" runat="server" Text="Label"></asp:Label> 歡迎進入本系統</h1>
            </div>
         
 

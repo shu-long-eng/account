@@ -7,38 +7,38 @@
 // </自動產生的>
 //------------------------------------------------------------------------------
 
-namespace WebApplication2
+namespace WebApplication2.零用金表
 {
 
 
-    public partial class WebForm2
+    public partial class EditCash
     {
 
         /// <summary>
-        /// form1 控制項。
+        /// CashDateText 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.TextBox CashDateText;
 
         /// <summary>
-        /// ucNav 控制項。
+        /// CashUseText 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::WebApplication2.ucNav ucNav;
+        protected global::System.Web.UI.WebControls.TextBox CashUseText;
 
         /// <summary>
-        /// Label1 控制項。
+        /// CashCostText 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.TextBox CashCostText;
     }
 }

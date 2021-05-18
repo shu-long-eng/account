@@ -184,7 +184,7 @@ namespace WebApplication2
             string querystr = @"update assets set [IsDelete] = 'true' where ID = @id;
                                 select * from assets where ID=@id;";
 
-            string newTotal;
+            //string newTotal;
            //string querystr = @"delete Assets where ID=@ID;";
 
             using (SqlConnection con = new SqlConnection(connectionstring))
@@ -285,7 +285,7 @@ namespace WebApplication2
                 }
             }
         }
-        public static void BeforeDelete(string id)
+        public static void RecoveryData(string id)
         {
             string querystring = @"SELECT  * from Assets where ID=@ID;";
 

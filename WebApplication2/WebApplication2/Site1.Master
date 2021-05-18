@@ -28,6 +28,7 @@
         .dropdown-item:hover{
             background-color:lightskyblue;
         }
+        
     </style>
 </head>
 <body>
@@ -35,7 +36,9 @@
         <div >
             <nav id="sidebar">
                 <uc1:ucNav runat="server" ID="ucNav" />
+
             </nav>
+            
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
 
 
@@ -59,11 +62,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 
 
-    
+    <div>
     <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
 
     </asp:ContentPlaceHolder>
-
+    </div>
 
 </body>
 </html>

@@ -28,8 +28,8 @@
     <div id="content">
         <p id="pDate">日期: <asp:TextBox ID="date" runat="server" type="date"></asp:TextBox></p>   <br />
        <p> 科目: <asp:TextBox ID="sub" runat="server"></asp:TextBox> </p>   <br />
-       <p> 摘要: <asp:TextBox ID="usefor" runat="server"></asp:TextBox></p> <br />
-        <p>金額: <asp:TextBox ID="money" runat="server"></asp:TextBox></p>  <br />
+       <p> 摘要: <asp:TextBox ID="usefor" runat="server" MaxLength="10"></asp:TextBox></p> <br />
+        <p>金額: <asp:TextBox ID="money" runat="server" MaxLength="10"　onkeyup="value=value.replace(/[^\d]/g,'') "></asp:TextBox></p>  <br />
         <p id="OutIn">收/支: <asp:DropDownList ID="DropDownList1" runat="server">
                 <asp:ListItem>收入</asp:ListItem>
                 <asp:ListItem>支出</asp:ListItem>

@@ -11,7 +11,13 @@ namespace WebApplication2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!LoginHelper.HasLogined()) //判斷是否已經登入
+            {
+                string targetUrl =
+                    "~/Login.aspx";
 
+                Response.Redirect(targetUrl);  //如果沒登入跳轉至登入頁
+            }
         }
     }
 }

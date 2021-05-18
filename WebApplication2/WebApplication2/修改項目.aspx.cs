@@ -19,7 +19,7 @@ namespace WebApplication2
             string usefor = dt.Rows[0].Field<string>("Usefor");
             string money = dt.Rows[0].Field<int?>("Money").ToString();
             string OutIn = dt.Rows[0].Field<string>("IncomeAndExpenditure");
-            int? total = dt.Rows[0].Field<int?>("total");
+            //int? total = dt.Rows[0].Field<int?>("total");
 
             this.date.Text = date;
             this.sub.Text = sub;
@@ -46,9 +46,9 @@ namespace WebApplication2
             string newOutIn = this.DropDownList1.SelectedValue;
             
             DataTable dt = DB.searchDB(GetId);
-            string date = dt.Rows[0].Field<string>("Date");
-            string sub = dt.Rows[0].Field<string>("Sub");
-            string usefor = dt.Rows[0].Field<string>("Usefor");
+            //string date = dt.Rows[0].Field<string>("Date");
+            //string sub = dt.Rows[0].Field<string>("Sub");
+            //string usefor = dt.Rows[0].Field<string>("Usefor");
             int money = dt.Rows[0].Field<int>("Money");
             string OutIn = dt.Rows[0].Field<string>("IncomeAndExpenditure");
             int total = dt.Rows[0].Field<int>("total");

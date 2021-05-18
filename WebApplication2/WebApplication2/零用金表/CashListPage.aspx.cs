@@ -30,5 +30,13 @@ namespace WebApplication2.零用金表
                 Response.Write("<Script language='JavaScript'>alert('修改了');</Script>");
             }
         }
+
+        protected void NewData_Click(object sender, EventArgs e)
+        {
+            string targetUrl =
+                    "~/零用金表/EditCash.aspx";
+
+            Response.Redirect(targetUrl);
+        }
     }
 }

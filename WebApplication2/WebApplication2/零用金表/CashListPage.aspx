@@ -2,21 +2,36 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
         .jumbotron{
-            margin:0;
+          
+          padding-top:10px;
+          padding-bottom:10px;
+          margin-bottom:5px;
+      
         }
         #content{
             
             margin-left:300px;
             width:1100px;
         }
-        
+        #InsertBtn{
+            margin-top:10px;
+            margin-bottom:10px;
+        }
+        .NewCashData{
+            margin-bottom:10px;
+            width:275px;
+            background-color:red;
+        }
+        .TextPostion{
+            margin-left:31px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     
      <div class="jumbotron"><h1 class="display-4">零用金表</h1></div>
     <div id="content">
-    <asp:Button ID="NewDate" CssClass="btn btn-primary" runat="server" Text="新增資料" />
+   <div id="InsertBtn"><button type="button" class="btn btn-primary" data-target="#InserDataModal" data-toggle="modal">新增資料</button></div>
     <table id="myDataTalbe"  class="table table-striped table-hover">
             <thead>
                 <tr>
@@ -48,6 +63,28 @@
             </tbody>
         </table>
     </div>
+    <%--輸入資料Modal--%>
+    <div id="InserDataModal" class="modal fade" tabindex="-1" aria-hidden="true" data-backdrop="static" data-keyboard="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-title">新增項目</div>
+                    <button type="button" data-dismiss="modal" class="close"><span>&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="NewCashData">日期:<span class="TextPostion"><asp:TextBox ID="NewCashDateText" runat="server" type="date"></asp:TextBox></span></div>
+                    <div class="NewCashData">發票號碼:<asp:TextBox ID="NewReceiptNumText" runat="server"></asp:TextBox></div>
+                    <div class="NewCashData">用途:<asp:TextBox ID="NewCashUseText" runat="server"></asp:TextBox></div>
+                    <div class="NewCashData">金額:<asp:TextBox ID="NewCashCostText" runat="server" TextMode="Number" min="0"></asp:TextBox></div>
+                </div>
+                <div class="modal-footer">
+                    <button id="EditDataBtn" class="btn btn-success" onclick="return confirm('是否新增項目？')">新增</button>
+                    <button class="btn btn-secondary">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
     <script>
@@ -56,5 +93,6 @@
                 "order": [[0, "desc"]]
             });
      });
+
     </script>
 </asp:Content>

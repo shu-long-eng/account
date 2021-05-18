@@ -45,7 +45,7 @@
     <div class="jumbotron"><h1 class="display-4">現金日記帳</h1></div>
     <uc1:UC新增日記帳 runat="server" id="UC新增日記帳" /> <%--使用者控制項--%>
     <div id="content" class="jumbotron">
-        <div id="insert"><button type="button" data-target="#myModal" data-toggle="modal" id="btn" class="btn btn-primary">新增資料</button></div>
+        <div id="insert"><button type="button" data-target="#myModal" data-toggle="modal" id="InserBtn" class="btn btn-primary">新增資料</button></div>
         <table id="myDataTalbe"  class="table table-striped table-hover">
             <thead>
                 <tr>
@@ -74,6 +74,7 @@
                                 <asp:Button ID="Button1" runat="server" Text="修改" commandName="EditItem" CommandArgument='<%# Eval("ID") %>' class="btn btn-warning"/>               
                                 <asp:Button　data-target="#myModal" data-toggle="modal" ID="Button2" runat="server" Text="刪除" class="btn btn-danger" commandName="deleteItem" CommandArgument='<%# Eval("ID") %>' OnClientClick="return confirm('是否刪除項目？')"/>
                             </td>
+                            </tr>
                     </ItemTemplate>
                 </asp:Repeater>
             </tbody>
@@ -93,6 +94,7 @@
    
      
     <script type="text/javascript">
+        /*Table外掛*/
         $(function () {
             $("#myDataTalbe").DataTable({
                 "order": [[0, "desc"]]
@@ -100,14 +102,14 @@
         });
 
         
-        document.getElementById("btn").onclick = function () {
+        document.getElementById("InserBtn").onclick = function () {
             $("#myModel").modal('show');
 
 
         }
             
 
-    /*    $("#deleteCheck").modal('show');*/
+  
 
         
 
@@ -115,9 +117,7 @@
         document.getElementById("confirmBtn").onclick = function () {
             $("#confirm").modal('show');
         }
-        $(function () {
-            $('#Text1').datepicker();
-        });
+        
 
        
 

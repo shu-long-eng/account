@@ -14,6 +14,7 @@ namespace WebApplication2
        
         protected void Page_init(object sender, EventArgs e)
         {
+            //以SQL的Table名為參數帶入查詢
             string DBName = "Assets";
             this.showMoneyList.DataSource = DB.showTotalDB(DBName);
             this.showMoneyList.DataBind();
@@ -45,7 +46,7 @@ namespace WebApplication2
 
             if ("deleteItem" == cmdName)
             {
-                DB.BeforeDelete(cmdArgu); //還原該項目再刪除此項目前原本數值
+                DB.RecoveryData(cmdArgu); //還原該項目再刪除此項目前原本數值
 
                 DB.deleteDB(cmdArgu);
             }

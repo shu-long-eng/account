@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace WebApplication2.現金分析表
 {
-    public class DB現金分析表
+    public class DBCashAnalysis
     {
         const string connectionstring = "Data Source=localhost\\SQLExpress;Initial Catalog=財經系統;Integrated Security=true";
         const int month = 12;
@@ -126,34 +126,34 @@ namespace WebApplication2.現金分析表
                 }
             }
         }
-        public static DataTable showSub()
-        {
-            string querystring = @"select [SubList] from [SubList];";
+        //public static DataTable showSub()
+        //{
+        //    string querystring = @"select [SubList] from [SubList];";
 
-            using (SqlConnection con = new SqlConnection(connectionstring))
-            {
-                SqlCommand command = new SqlCommand(querystring, con);
+        //    using (SqlConnection con = new SqlConnection(connectionstring))
+        //    {
+        //        SqlCommand command = new SqlCommand(querystring, con);
 
-                try
-                {
-                    con.Open();
+        //        try
+        //        {
+        //            con.Open();
 
-                    SqlDataReader reader = command.ExecuteReader();
+        //            SqlDataReader reader = command.ExecuteReader();
 
-                    DataTable dt = new DataTable();
+        //            DataTable dt = new DataTable();
 
-                    dt.Load(reader);
+        //            dt.Load(reader);
 
-                    reader.Close();
+        //            reader.Close();
 
-                    return dt;
-                }
-                catch (Exception e)
-                {
-                    throw;
-                }
-            }
-        }
+        //            return dt;
+        //        }
+        //        catch (Exception e)
+        //        {
+        //            throw;
+        //        }
+        //    }
+        //}
         public static List<subMoneyIn> subMoneyIn(int year, string outIn)
         {
             // string querystringTotal = @"select Sum(Money) as money,subid from assets where [date] like @date and not IsDelete = 'true' and IncomeAndExpenditure ='收入' group by SubID;";
