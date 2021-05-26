@@ -64,7 +64,7 @@
                     <ItemTemplate>
                         <tr>
                             <td><%#Eval("ID") %></td>
-                            <td><%#Eval("Date") %></td>
+                            <td><%#Eval("Date","{0:yyyy-MM-dd}") %></td>
                             <td><%#Eval("Sub") %></td>
                             <td><%#Eval("Usefor") %></td>
                             <td><%#Eval("Money") %></td>

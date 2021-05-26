@@ -10,7 +10,7 @@ namespace WebApplication2.現金分析表
 {
     public class DBCashAnalysis
     {
-        const string connectionstring = "Data Source=localhost\\SQLExpress;Initial Catalog=財經系統;Integrated Security=true";
+        static string connectionstring = "Data Source=localhost\\SQLExpress;Initial Catalog=財經系統;Integrated Security=true";
         const int month = 12;
         public static List<monthMoney> monthTotalOutIn(int year, string outIn) //一個儲存每月收入/支出的方法
         {
@@ -43,7 +43,7 @@ namespace WebApplication2.現金分析表
 
                         total = command.ExecuteScalar() as int?; //ExecuteScalar()輸出一筆資料
 
-
+                        
                         if (total != null)
                         { //不等於null就存入數字
                             monthMoney.Add(new monthMoney()

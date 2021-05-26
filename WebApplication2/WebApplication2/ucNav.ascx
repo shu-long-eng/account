@@ -13,11 +13,11 @@
                     <p>功能表</p>
                     
                     <li class="list-group-item list-group-item-action list-group-item-primary">
-                        <a href="現金日記帳.aspx">現金日記帳</a>
+                        <a href="../現金日記帳.aspx">現金日記帳</a>
                     </li>
 
                     <li class="list-group-item list-group-item-action list-group-item-primary">
-                        <a href="CashAnalysis.aspx">現金分析表</a>
+                        <a href="../現金分析表/CashAnalysis.aspx">現金分析表</a>
                     </li>
 
                     <li class="nav-item dropdown list-group-item list-group-item-action list-group-item-primary">

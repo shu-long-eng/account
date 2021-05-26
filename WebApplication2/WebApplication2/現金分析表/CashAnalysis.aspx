@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="CashAnalysis.aspx.cs" Inherits="WebApplication2.現金分析表.WebForm1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <script src="TableExport/table2excel.js"></script>
+    <script src="../TableExport/table2excel.js"></script>
 
     <style>
         #content{
@@ -23,12 +23,13 @@
     
 
 <div id="content">
-    <asp:DropDownList ID="yearSelect" runat="server" AutoPostBack="True">
-        <asp:ListItem Value="2021">2021</asp:ListItem>
-        <asp:ListItem Value="2022">2022</asp:ListItem>
-        <asp:ListItem Value="2023">2023</asp:ListItem>
-        <asp:ListItem Value="2024">2024</asp:ListItem>
-    </asp:DropDownList><span>年</span>
+   
+
+    <asp:DropDownList ID="yearSelect" runat="server" AutoPostBack="true">
+
+    </asp:DropDownList>
+
+    <span>年</span>
     <br />
     <button type="button" class="btn btn-success" id="mybtn">匯出EXCEL</button>
     <table class="table table-bordered table-hover table-striped" id="MoneyList">
@@ -54,7 +55,7 @@
                 <td class="TableTitle">月收入</td>
                 <asp:Repeater ID="monthIncome" runat="server">
                     <ItemTemplate>
-                        <td><%# Eval("monthInOut")  %></td>
+                        <td><%# Eval("moneylistIn")  %></td>
                     </ItemTemplate>
                 </asp:Repeater>
             </tr>
@@ -62,7 +63,7 @@
                 <td class="TableTitle">月支出</td>
                 <asp:Repeater ID="monthExpenditure" runat="server">
                     <ItemTemplate>
-                        <td><%# Eval("monthInOut")  %></td>
+                        <td><%# Eval("moneylistOut")  %></td>
                     </ItemTemplate>
                 </asp:Repeater>
             </tr>
@@ -70,7 +71,7 @@
                 <td class="TableTitle">月餘額</td>
                 <asp:Repeater ID="monthBalance" runat="server">
                     <ItemTemplate>
-                        <td><%# Eval("balance")  %></td>
+                        <td><%# Eval("BalanceList")  %></td>
                     </ItemTemplate>
                 </asp:Repeater>
             </tr>
@@ -82,7 +83,7 @@
             <asp:Repeater ID="MonthSubIncome" runat="server">
                 <ItemTemplate>
                     <tr>
-                        <td class="TableTitle"><%# Eval("subType","{0:#,0}")  %></td>
+                        <td class="TableTitle"><%# Eval("subType")  %></td>
                         <td><%# Eval("Jan")  %></td>
                         <td><%# Eval("Feb")  %></td>
                         <td><%# Eval("Mar")  %></td>
@@ -108,7 +109,7 @@
             <asp:Repeater ID="MonthSubEx" runat="server">
                 <ItemTemplate>
                     <tr>
-                        <td class="TableTitle"><%# Eval("subType","{0:#,0}")  %></td>
+                        <td class="TableTitle"><%# Eval("subType")  %></td>
                         <td><%# Eval("Jan")  %></td>
                         <td><%# Eval("Feb")  %></td>
                         <td><%# Eval("Mar")  %></td>

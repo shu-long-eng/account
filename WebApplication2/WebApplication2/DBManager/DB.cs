@@ -9,83 +9,12 @@ namespace WebApplication2
 {
     public class DB
     {
-        const string connectionstring = "Data Source=localhost\\SQLExpress;Initial Catalog=財經系統;Integrated Security=true";
-        //public static Boolean confirmAcc(string account)
-        //{
-        //    string querystr = $@"select Account from [User] where Account = @account;";
+        //const string connectionstring = "Data Source=localhost\\SQLExpress;Initial Catalog=財經系統;Integrated Security=true";
+        
 
-        //    using (SqlConnection con = new SqlConnection(connectionstring))
-        //    {
-        //        SqlCommand command = new SqlCommand(querystr, con);
-
-        //        command.Parameters.AddWithValue("@account", account);
-
-        //        try
-        //        {
-        //            con.Open();
-
-        //            SqlDataReader reader = command.ExecuteReader();
-
-        //            if (!reader.Read())
-        //            {
-        //                reader.Close();
-        //                return true;
-        //            }
-        //            else
-        //            {
-        //                reader.Close();
-        //                return false;
-        //            }
-
-
-        //        }
-        //        catch (Exception e)
-        //        {
-        //            HttpContext.Current.Response.Write(e);
-
-        //            return true;
-        //        }
-        //    }
-        //}
-        //public static Boolean confirmPw(string pw)
-        //{
-        //    string querystr = $@"select password from [User] where password = @pw;";
-
-        //    using (SqlConnection con = new SqlConnection(connectionstring))
-        //    {
-        //        SqlCommand command = new SqlCommand(querystr, con);
-
-        //        command.Parameters.AddWithValue("@pw", pw);
-
-        //        try
-        //        {
-        //            con.Open();
-
-        //            SqlDataReader reader = command.ExecuteReader();
-
-        //            if (!reader.Read())
-        //            {
-        //                reader.Close();
-        //                return true;
-        //            }
-        //            else
-        //            {
-        //                reader.Close();
-        //                return false;
-        //            }
-
-
-        //        }
-        //        catch (Exception e)
-        //        {
-        //            HttpContext.Current.Response.Write(e);
-
-        //            return true;
-        //        }
-        //    }
-        //}
         public static DataTable showTotalDB(string DBName)
         {
+            string connectionstring = "Data Source=localhost\\SQLExpress;Initial Catalog=財經系統;Integrated Security=true";
             string querystring = @"SELECT  * from "+ DBName + " where not [Isdelete] = 'true';";
 
             using (SqlConnection con = new SqlConnection(connectionstring))
@@ -117,10 +46,11 @@ namespace WebApplication2
         }
         public static void insertDB(string date, string sub, string usefor, int? money, string outIn, int subID)
         {
+            string connectionstring = "Data Source=localhost\\SQLExpress;Initial Catalog=財經系統;Integrated Security=true";
             string queryTotalMoney = @"select top 1 [Total] from [Assets] where isdelete = 'false' order by [ID] desc;";
 
-            string querystr = @"insert into Assets (Date,Sub,Usefor,Money,[IncomeAndExpenditure],Total,[IsDelete],SubID)
-                        values (@date,@sub,@usefor,@money,@outIn,@total,'false',@subID);";
+            string querystr = @"insert into Assets (Date,Sub,Usefor,Money,[IncomeAndExpenditure],Total,[IsDelete],SubID,CreateTime,Creater)
+                        values (@date,@sub,@usefor,@money,@outIn,@total,'false',@subID,@time,@creater);";
             using (SqlConnection con = new SqlConnection(connectionstring))
             {
                 SqlCommand command = new SqlCommand(querystr, con);
@@ -157,8 +87,8 @@ namespace WebApplication2
                     {
                         total = total - money;
                     }
-                
-                  
+                    
+                    string creater = HttpContext.Current.Session["Account"].ToString();
                     command.Parameters.AddWithValue("@date", date);
                     command.Parameters.AddWithValue("@sub",sub);
                     command.Parameters.AddWithValue("@usefor",usefor);
@@ -166,6 +96,8 @@ namespace WebApplication2
                     command.Parameters.AddWithValue("@outIn", outIn);
                     command.Parameters.AddWithValue("@total", total);
                     command.Parameters.AddWithValue("@subID", subID);
+                    command.Parameters.AddWithValue("@time", DateTime.Now);
+                    command.Parameters.AddWithValue("@creater", creater);
                     command.ExecuteNonQuery();
                 }
                 catch(Exception e)
@@ -181,6 +113,7 @@ namespace WebApplication2
         }
         public static void deleteDB(string id)
         {
+            string connectionstring = "Data Source=localhost\\SQLExpress;Initial Catalog=財經系統;Integrated Security=true";
             string querystr = @"update assets set [IsDelete] = 'true' where ID = @id;
                                 select * from assets where ID=@id;";
 
@@ -219,6 +152,7 @@ namespace WebApplication2
         }
         public static DataTable searchDB(string id)
         {
+            string connectionstring = "Data Source=localhost\\SQLExpress;Initial Catalog=財經系統;Integrated Security=true";
             string querystring = @"SELECT  * from Assets where ID=@ID;";
             
             using(SqlConnection con = new SqlConnection(connectionstring))
@@ -249,6 +183,7 @@ namespace WebApplication2
         }
         public static bool UpdateDB(string id,string date, string sub, string usefor, int money, string outIn, int total)
         {
+            string connectionstring = "Data Source=localhost\\SQLExpress;Initial Catalog=財經系統;Integrated Security=true";
             string querystr = @"update [Assets] set Date = @date, Sub = @sub, Usefor = @usefor, 
                                 Money = @money, IncomeAndExpenditure = @outIn, Total = @total where ID = @id and isdelete = 'false';"; //20210413 修改
             using(SqlConnection con = new SqlConnection(connectionstring))
@@ -287,6 +222,7 @@ namespace WebApplication2
         }
         public static void RecoveryData(string id)
         {
+            string connectionstring = "Data Source=localhost\\SQLExpress;Initial Catalog=財經系統;Integrated Security=true";
             string querystring = @"SELECT  * from Assets where ID=@ID;";
 
              string NewQuery;
@@ -344,6 +280,7 @@ namespace WebApplication2
         }
         public static bool BalanceCheck(int money)
         {
+            string connectionstring = "Data Source=localhost\\SQLExpress;Initial Catalog=財經系統;Integrated Security=true";
             string querystring = @"select top(1) total from Assets order by ID desc;";
 
             using(SqlConnection con = new SqlConnection(connectionstring))
@@ -379,6 +316,7 @@ namespace WebApplication2
         }
         public static bool NewBalance(int total, int newTotal, string id)
         {
+            string connectionstring = "Data Source=localhost\\SQLExpress;Initial Catalog=財經系統;Integrated Security=true";
             string querystring = @"update [Assets] set total = total + @newMoney where ID > @id;"; //
 
             int newMoney = newTotal - total;
@@ -423,6 +361,7 @@ namespace WebApplication2
         }
         public static DataTable ShowDataTable(string DBName)
         {
+            string connectionstring = "Data Source=localhost\\SQLExpress;Initial Catalog=財經系統;Integrated Security=true";
             string querystring = "select * from " + DBName + ";";
 
             using(SqlConnection con = new SqlConnection(connectionstring))
@@ -452,6 +391,7 @@ namespace WebApplication2
         }
         public static bool AddSubList(string sub)
         {
+            string connectionstring = "Data Source=localhost\\SQLExpress;Initial Catalog=財經系統;Integrated Security=true";
             string querystring = @"insert into SubList (Sublist) values (@sub);";
 
             string check = @"select SubList from SubList where SubList = @sub";

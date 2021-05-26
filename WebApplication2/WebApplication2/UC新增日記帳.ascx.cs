@@ -52,10 +52,12 @@ namespace WebApplication2
                 string date = this.TextDate.Text;
                 string sub = this.DropDownListSub.SelectedItem.Text;
                 string usefor = this.TextSummary.Text;
-                int money = Convert.ToInt32(this.TextMoney.Text);
+                //int? money = Convert.ToInt32(this.TextMoney.Text);
                 string OutIn = this.DropDownList1OutIn.SelectedItem.Value;
                 int subID = Convert.ToInt32(this.DropDownListSub.SelectedValue);
-                
+
+                int money = (!string.IsNullOrWhiteSpace(this.TextMoney.Text)) ? Convert.ToInt32(this.TextMoney.Text) : 0;
+
                 this.TextDate.Text="";
                 this.TextSummary.Text="";
                 this.TextMoney.Text="";

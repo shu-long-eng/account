@@ -12,8 +12,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WebApplication2</RootNamespace>
-    <AssemblyName>WebApplication2</AssemblyName>
+    <RootNamespace>journal</RootNamespace>
+    <AssemblyName>journal</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -163,7 +163,7 @@
     <Content Include="UCReceiptList.ascx" />
     <Content Include="UC新增日記帳.ascx" />
     <Content Include="修改項目.aspx" />
-    <Content Include="CashAnalysis.aspx" />
+    <Content Include="現金分析表\CashAnalysis.aspx" />
     <Content Include="現金日記帳.aspx" />
     <Content Include="發票總攬.aspx" />
     <Content Include="API\Handler1.ashx" />
@@ -260,6 +260,8 @@
     <Compile Include="API\Handler1.ashx.cs">
       <DependentUpon>Handler1.ashx</DependentUpon>
     </Compile>
+    <Compile Include="DBManager\NewMethod.cs" />
+    <Compile Include="Helpers\type.cs" />
     <Compile Include="newTotal.cs" />
     <Compile Include="DBManager\DBAccount.cs" />
     <Compile Include="LoginHelper.cs" />
@@ -333,11 +335,11 @@
     </Compile>
     <Compile Include="DBManager\DBCashAnalysis.cs" />
     <Compile Include="月份金額.cs" />
-    <Compile Include="CashAnalysis.aspx.cs">
+    <Compile Include="現金分析表\CashAnalysis.aspx.cs">
       <DependentUpon>CashAnalysis.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="CashAnalysis.aspx.designer.cs">
+    <Compile Include="現金分析表\CashAnalysis.aspx.designer.cs">
       <DependentUpon>CashAnalysis.aspx</DependentUpon>
     </Compile>
     <Compile Include="現金日記帳.aspx.cs">
@@ -395,7 +397,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="外部文件\" />
-    <Folder Include="現金分析表\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
