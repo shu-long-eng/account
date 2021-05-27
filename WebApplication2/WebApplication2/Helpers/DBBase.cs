@@ -10,7 +10,7 @@ namespace WebApplication2.Helpers
         //取得DataTable
         public DataTable GetDataTable(string dbCommand, List<SqlParameter> parameters)
         {
-            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ContextModel1"].ToString();
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ContextModel1"].ConnectionString;
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
