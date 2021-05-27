@@ -10,7 +10,7 @@ namespace WebApplication2.Helpers
         //取得DataTable
         public DataTable GetDataTable(string dbCommand, List<SqlParameter> parameters)
         {
-            string connectionString = "Data Source=localhost\\SQLExpress;Initial Catalog=財經系統;Integrated Security=true;";
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ContextModel1"].ToString();
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -38,9 +38,9 @@ namespace WebApplication2.Helpers
         //取得第一筆資料
         public object GetScale(string dbCommand, List<SqlParameter> parameters)
         {
-            string connectionString = this.GetConnectionString();
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ContextModel1"].ToString();
 
-            using(SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(dbCommand, connection);
 

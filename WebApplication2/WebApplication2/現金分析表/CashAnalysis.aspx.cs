@@ -58,71 +58,71 @@ namespace WebApplication2.現金分析表
            
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            var a = GetReportMS();
-        }
+        //protected void Button1_Click(object sender, EventArgs e)
+        //{
+        //    var a = GetReportMS();
+        //}
 
-        public MemoryStream GetReportMS()
-        {
-            Year = Convert.ToInt32(this.yearSelect.SelectedValue);      //Year為目前選單所選的項目
+        //public MemoryStream GetReportMS()
+        //{
+        //    Year = Convert.ToInt32(this.yearSelect.SelectedValue);      //Year為目前選單所選的項目
 
-            DataSet ds = OutputCashMonth2(Year);
-            List<Income> income_list = NewMethod.incomelist(ds, (int)MoneyType.Income);
-            List<ex> ex_list = NewMethod.exlist(ds, (int)MoneyType.Expenditure);
-            List<Balance> bl_list = NewMethod.OutputBalance(ds, (int)MoneyType.Balance);
+        //    DataSet ds = OutputCashMonth2(Year);
+        //    List<Income> income_list = NewMethod.incomelist(ds, (int)MoneyType.Income);
+        //    List<ex> ex_list = NewMethod.exlist(ds, (int)MoneyType.Expenditure);
+        //    List<Balance> bl_list = NewMethod.OutputBalance(ds, (int)MoneyType.Balance);
 
-            IWorkbook workbook = new HSSFWorkbook();
-            ISheet sheet1 = workbook.CreateSheet("sheet1");
+        //    IWorkbook workbook = new HSSFWorkbook();
+        //    ISheet sheet1 = workbook.CreateSheet("sheet1");
 
-            sheet1.AddMergedRegion(new CellRangeAddress(0, 2, 0, 12));
-            ICell title = sheet1.CreateRow(0).CreateCell(0);
-            title.SetCellValue(Year.ToString() + "年現金分析表");
-            ICellStyle cellstyle = workbook.CreateCellStyle();
-            cellstyle.Alignment = HorizontalAlignment.Center; 
-            cellstyle.VerticalAlignment = VerticalAlignment.Center;
-            IFont font = workbook.CreateFont();
-            font.FontName = "新細明體";
-            font.FontHeightInPoints = 25;
-            font.IsBold = true;
+        //    sheet1.AddMergedRegion(new CellRangeAddress(0, 2, 0, 12));
+        //    ICell title = sheet1.CreateRow(0).CreateCell(0);
+        //    title.SetCellValue(Year.ToString() + "年現金分析表");
+        //    ICellStyle cellstyle = workbook.CreateCellStyle();
+        //    cellstyle.Alignment = HorizontalAlignment.Center; 
+        //    cellstyle.VerticalAlignment = VerticalAlignment.Center;
+        //    IFont font = workbook.CreateFont();
+        //    font.FontName = "新細明體";
+        //    font.FontHeightInPoints = 25;
+        //    font.IsBold = true;
 
-            cellstyle.SetFont(font);
-            title.CellStyle = cellstyle;
-
-
-            IRow header_row1 = sheet1.CreateRow(3);
-            IRow income_row = sheet1.CreateRow(4);
-            IRow ex_row = sheet1.CreateRow(5);
-            IRow bl_row = sheet1.CreateRow(6);
+        //    cellstyle.SetFont(font);
+        //    title.CellStyle = cellstyle;
 
 
-            for (var i = 0; i < 12; i++)
-            {
-                ICell cell = header_row1.CreateCell(i + 1);
-                cell.SetCellValue((i + 1).ToString() + "月");
-                cell.CellStyle.Alignment= HorizontalAlignment.Right;
-                ICell cellIn = income_row.CreateCell(i + 1);
-                cellIn.SetCellValue(income_list[i].moneylistIn);
-
-                ICell cellex = ex_row.CreateCell(i + 1);
-                cellex.SetCellValue(ex_list[i].moneylistOut);
-
-                ICell cellbl = bl_row.CreateCell(i + 1);
-                cellbl.SetCellValue(bl_list[i].BalanceList);
+        //    IRow header_row1 = sheet1.CreateRow(3);
+        //    IRow income_row = sheet1.CreateRow(4);
+        //    IRow ex_row = sheet1.CreateRow(5);
+        //    IRow bl_row = sheet1.CreateRow(6);
 
 
-            }
+        //    for (var i = 0; i < 12; i++)
+        //    {
+        //        ICell cell = header_row1.CreateCell(i + 1);
+        //        cell.SetCellValue((i + 1).ToString() + "月");
+        //        cell.CellStyle.Alignment= HorizontalAlignment.Right;
+        //        ICell cellIn = income_row.CreateCell(i + 1);
+        //        cellIn.SetCellValue(income_list[i].moneylistIn);
 
-            string path = "D:\\logs\\temp.xls";
+        //        ICell cellex = ex_row.CreateCell(i + 1);
+        //        cellex.SetCellValue(ex_list[i].moneylistOut);
 
-            using (FileStream file = new FileStream(path, FileMode.Create))
-            {
-                workbook.Write(file);
-            }
+        //        ICell cellbl = bl_row.CreateCell(i + 1);
+        //        cellbl.SetCellValue(bl_list[i].BalanceList);
 
-            MemoryStream ms = new MemoryStream();
-            workbook.Write(ms);
-            return ms;
-        }
+
+        //    }
+
+        //    string path = "D:\\logs\\temp.xls";
+
+        //    using (FileStream file = new FileStream(path, FileMode.Create))
+        //    {
+        //        workbook.Write(file);
+        //    }
+
+        //    MemoryStream ms = new MemoryStream();
+        //    workbook.Write(ms);
+        //    return ms;
+        //}
     }
 }
