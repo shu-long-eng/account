@@ -10,7 +10,7 @@ namespace WebApplication2.現金分析表
 {
     public class DBCashAnalysis
     {
-        static string connectionstring = "Data Source=localhost\\SQLExpress;Initial Catalog=財經系統;Integrated Security=true";
+        static string connectionstring = System.Configuration.ConfigurationManager.ConnectionStrings["ContextModel1"].ToString();
         const int month = 12;
         public static List<monthMoney> monthTotalOutIn(int year, string outIn) //一個儲存每月收入/支出的方法
         {

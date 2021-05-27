@@ -11,7 +11,7 @@ namespace WebApplication2
     {
         public static DataTable AccountCheck(string account)
         {
-            string connectionstring = "Data Source=localhost\\SQLExpress;Initial Catalog=財經系統;Integrated Security=true";
+            string connectionstring = System.Configuration.ConfigurationManager.ConnectionStrings["ContextModel1"].ToString();
             string querystring = @"SELECT  * from [user] where Account = @account;";
 
             using (SqlConnection con = new SqlConnection(connectionstring))

@@ -45,9 +45,27 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.6.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>..\packages\Portable.BouncyCastle.1.8.6\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=1.2.0.246, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.1.2.0\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI, Version=2.5.3.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.5.3\lib\net45\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.5.3.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.5.3\lib\net45\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.5.3.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.5.3\lib\net45\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.5.3.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.5.3\lib\net45\NPOI.OpenXmlFormats.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -58,6 +76,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -132,10 +151,14 @@
     <Content Include="Global.asax" />
     <Content Include="navbar.aspx" />
     <Content Include="NoPage.aspx" />
+    <Content Include="PettyCashInsert.aspx" />
+    <Content Include="PettyCashList.aspx" />
     <Content Include="photo\photo.png" />
     <Content Include="photo\歡迎BOSS.png" />
     <Content Include="photo\歡迎主管.png" />
     <Content Include="photo\歡迎員工.png" />
+    <Content Include="ReceiptDetail.aspx" />
+    <Content Include="ReceiptList.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -165,7 +188,6 @@
     <Content Include="修改項目.aspx" />
     <Content Include="現金分析表\CashAnalysis.aspx" />
     <Content Include="現金日記帳.aspx" />
-    <Content Include="發票總攬.aspx" />
     <Content Include="API\Handler1.ashx" />
     <Content Include="零用金表\CashListPage.aspx" />
     <Content Include="零用金表\EditCash.aspx" />
@@ -261,7 +283,14 @@
       <DependentUpon>Handler1.ashx</DependentUpon>
     </Compile>
     <Compile Include="DBManager\NewMethod.cs" />
+    <Compile Include="Helpers\DBBase.cs" />
+    <Compile Include="Helpers\PagingHelper.cs" />
+    <Compile Include="Helpers\ReceiptDetailHelper.cs" />
     <Compile Include="Helpers\type.cs" />
+    <Compile Include="Managers\DDLManager.cs" />
+    <Compile Include="Managers\ReceiptManager.cs" />
+    <Compile Include="Models\ReceiptModel.cs" />
+    <Compile Include="Models\Revenue_Expense.cs" />
     <Compile Include="newTotal.cs" />
     <Compile Include="DBManager\DBAccount.cs" />
     <Compile Include="LoginHelper.cs" />
@@ -283,6 +312,24 @@
     <Compile Include="NoPage.aspx.designer.cs">
       <DependentUpon>NoPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PettyCashInsert.aspx.cs">
+      <DependentUpon>PettyCashInsert.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PettyCashInsert.aspx.designer.cs">
+      <DependentUpon>PettyCashInsert.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PettyCashList.aspx.cs">
+      <DependentUpon>PettyCashList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PettyCashList.aspx.designer.cs">
+      <DependentUpon>PettyCashList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PettyCash\DBBase.cs" />
+    <Compile Include="PettyCash\PettyCashDB.cs" />
+    <Compile Include="PettyCash\PettyCashmanager.cs" />
+    <Compile Include="PettyCash\PettyCashmodel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="homepage.aspx.cs">
       <DependentUpon>homepage.aspx</DependentUpon>
@@ -297,6 +344,20 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReceiptDetail.aspx.cs">
+      <DependentUpon>ReceiptDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReceiptDetail.aspx.designer.cs">
+      <DependentUpon>ReceiptDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReceiptList.aspx.cs">
+      <DependentUpon>ReceiptList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReceiptList.aspx.designer.cs">
+      <DependentUpon>ReceiptList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site1.Master.cs">
       <DependentUpon>Site1.Master</DependentUpon>
@@ -349,13 +410,6 @@
     <Compile Include="現金日記帳.aspx.designer.cs">
       <DependentUpon>現金日記帳.aspx</DependentUpon>
     </Compile>
-    <Compile Include="發票總攬.aspx.cs">
-      <DependentUpon>發票總攬.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="發票總攬.aspx.designer.cs">
-      <DependentUpon>發票總攬.aspx</DependentUpon>
-    </Compile>
     <Compile Include="零用金表\CashListPage.aspx.cs">
       <DependentUpon>CashListPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -395,7 +449,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
     <Folder Include="外部文件\" />
   </ItemGroup>
   <ItemGroup>

@@ -20,28 +20,20 @@
                         <a href="../現金分析表/CashAnalysis.aspx">現金分析表</a>
                     </li>
 
-                    <li class="nav-item dropdown list-group-item list-group-item-action list-group-item-primary">
-                       <a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false" id ="CashMenu">零用金</a>
-                        <div class="dropdown-menu" aria-labelledby="CashMenu">
-                            <a class="dropdown-item" href="#">總攬</a>
-                            <a class="dropdown-item" href="#">零用金申請</a>
-                           
-                        </div>
+                    
+
+                   <li class="list-group-item list-group-item-action list-group-item-primary">
+                        <a href="../PettyCashList.aspx">零用金</a>
                     </li>
 
                     <%--<li class="list-group-item list-group-item-action list-group-item-primary">
                         <a href="#">稅務資料</a>
                     </li>--%>
-
-
-                    <li class="nav-item dropdown list-group-item list-group-item-action list-group-item-primary">
-                        <a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false" id ="TxtMenu">稅務資料</a>
-                        <div class="dropdown-menu" aria-labelledby="TxtMenu">
-                            <a class="dropdown-item" href="#">總攬</a>
-                            <a class="dropdown-item" href="#">銷項稅額</a>
-                            <a class="dropdown-item" href="#">進項稅額</a>
-                        </div>
+                     <li class="list-group-item list-group-item-action list-group-item-primary">
+                        <a href="../ReceiptList.aspx">稅務管理</a>
                     </li>
+
+                    
 
                      <li class="list-group-item list-group-item-action list-group-item-primary">                 
                          <asp:PlaceHolder ID="LoginPlc" runat="server" Visible="false">

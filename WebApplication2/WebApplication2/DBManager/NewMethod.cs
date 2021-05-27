@@ -9,7 +9,7 @@ namespace journal.DBManager
 {
     public class NewMethod
     {
-        static string connectionstring = "Data Source=localhost\\SQLExpress;Initial Catalog=財經系統;Integrated Security=true";
+        static string connectionstring = System.Configuration.ConfigurationManager.ConnectionStrings["ContextModel1"].ToString();
 
         public class Income
         {

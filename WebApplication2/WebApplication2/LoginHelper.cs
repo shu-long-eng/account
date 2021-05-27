@@ -14,7 +14,7 @@ namespace WebApplication2
         {
             bool? val = HttpContext.Current.Session[_sessionKey] as bool?;
 
-            if(val.HasValue && val.Value)
+            if(val.HasValue && val.Value) 
             {
                 return true;
             }

@@ -32,6 +32,8 @@
     <span>年</span>
     <br />
     <button type="button" class="btn btn-success" id="mybtn">匯出EXCEL</button>
+
+    <asp:Button ID="Button1" runat="server" Text="ExportExcel" OnClick="Button1_Click"/>
     <table class="table table-bordered table-hover table-striped" id="MoneyList">
         <thead>
             <tr>

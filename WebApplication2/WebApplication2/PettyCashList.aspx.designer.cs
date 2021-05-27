@@ -7,83 +7,65 @@
 // </自動產生的>
 //------------------------------------------------------------------------------
 
-namespace WebApplication2.現金分析表
+namespace WebApplication2
 {
 
 
-    public partial class WebForm1
+    public partial class PettyCashList
     {
 
         /// <summary>
-        /// title 控制項。
+        /// KeyWordDDList 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label title;
+        protected global::System.Web.UI.WebControls.DropDownList KeyWordDDList;
 
         /// <summary>
-        /// yearSelect 控制項。
+        /// Searchtxt 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList yearSelect;
+        protected global::System.Web.UI.WebControls.TextBox Searchtxt;
 
         /// <summary>
-        /// Button1 控制項。
+        /// Searchbtn 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button Searchbtn;
 
         /// <summary>
-        /// monthIncome 控制項。
+        /// Msg 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater monthIncome;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Msg;
 
         /// <summary>
-        /// monthExpenditure 控制項。
+        /// tableRepeater 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater monthExpenditure;
+        protected global::System.Web.UI.WebControls.Repeater tableRepeater;
 
         /// <summary>
-        /// monthBalance 控制項。
+        /// repPaging 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater monthBalance;
-
-        /// <summary>
-        /// MonthSubIncome 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater MonthSubIncome;
-
-        /// <summary>
-        /// MonthSubEx 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater MonthSubEx;
+        protected global::System.Web.UI.WebControls.Repeater repPaging;
     }
 }

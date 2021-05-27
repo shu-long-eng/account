@@ -14,7 +14,7 @@ namespace WebApplication2
 
         public static DataTable showTotalDB(string DBName)
         {
-            string connectionstring = "Data Source=localhost\\SQLExpress;Initial Catalog=財經系統;Integrated Security=true";
+            string connectionstring = System.Configuration.ConfigurationManager.ConnectionStrings["ContextModel1"].ToString();
             string querystring = @"SELECT  * from "+ DBName + " where not [Isdelete] = 'true';";
 
             using (SqlConnection con = new SqlConnection(connectionstring))
@@ -46,7 +46,7 @@ namespace WebApplication2
         }
         public static void insertDB(string date, string sub, string usefor, int? money, string outIn, int subID)
         {
-            string connectionstring = "Data Source=localhost\\SQLExpress;Initial Catalog=財經系統;Integrated Security=true";
+            string connectionstring = System.Configuration.ConfigurationManager.ConnectionStrings["ContextModel1"].ToString();
             string queryTotalMoney = @"select top 1 [Total] from [Assets] where isdelete = 'false' order by [ID] desc;";
 
             string querystr = @"insert into Assets (Date,Sub,Usefor,Money,[IncomeAndExpenditure],Total,[IsDelete],SubID,CreateTime,Creater)
@@ -113,7 +113,7 @@ namespace WebApplication2
         }
         public static void deleteDB(string id)
         {
-            string connectionstring = "Data Source=localhost\\SQLExpress;Initial Catalog=財經系統;Integrated Security=true";
+            string connectionstring = System.Configuration.ConfigurationManager.ConnectionStrings["ContextModel1"].ToString();
             string querystr = @"update assets set [IsDelete] = 'true' where ID = @id;
                                 select * from assets where ID=@id;";
 
@@ -152,7 +152,7 @@ namespace WebApplication2
         }
         public static DataTable searchDB(string id)
         {
-            string connectionstring = "Data Source=localhost\\SQLExpress;Initial Catalog=財經系統;Integrated Security=true";
+            string connectionstring = System.Configuration.ConfigurationManager.ConnectionStrings["ContextModel1"].ToString();
             string querystring = @"SELECT  * from Assets where ID=@ID;";
             
             using(SqlConnection con = new SqlConnection(connectionstring))
@@ -183,7 +183,7 @@ namespace WebApplication2
         }
         public static bool UpdateDB(string id,string date, string sub, string usefor, int money, string outIn, int total)
         {
-            string connectionstring = "Data Source=localhost\\SQLExpress;Initial Catalog=財經系統;Integrated Security=true";
+            string connectionstring = System.Configuration.ConfigurationManager.ConnectionStrings["ContextModel1"].ToString();
             string querystr = @"update [Assets] set Date = @date, Sub = @sub, Usefor = @usefor, 
                                 Money = @money, IncomeAndExpenditure = @outIn, Total = @total where ID = @id and isdelete = 'false';"; //20210413 修改
             using(SqlConnection con = new SqlConnection(connectionstring))
@@ -222,7 +222,7 @@ namespace WebApplication2
         }
         public static void RecoveryData(string id)
         {
-            string connectionstring = "Data Source=localhost\\SQLExpress;Initial Catalog=財經系統;Integrated Security=true";
+            string connectionstring = System.Configuration.ConfigurationManager.ConnectionStrings["ContextModel1"].ToString();
             string querystring = @"SELECT  * from Assets where ID=@ID;";
 
              string NewQuery;
@@ -280,7 +280,7 @@ namespace WebApplication2
         }
         public static bool BalanceCheck(int money)
         {
-            string connectionstring = "Data Source=localhost\\SQLExpress;Initial Catalog=財經系統;Integrated Security=true";
+            string connectionstring = System.Configuration.ConfigurationManager.ConnectionStrings["ContextModel1"].ToString();
             string querystring = @"select top(1) total from Assets order by ID desc;";
 
             using(SqlConnection con = new SqlConnection(connectionstring))
@@ -316,7 +316,7 @@ namespace WebApplication2
         }
         public static bool NewBalance(int total, int newTotal, string id)
         {
-            string connectionstring = "Data Source=localhost\\SQLExpress;Initial Catalog=財經系統;Integrated Security=true";
+            string connectionstring = System.Configuration.ConfigurationManager.ConnectionStrings["ContextModel1"].ToString();
             string querystring = @"update [Assets] set total = total + @newMoney where ID > @id;"; //
 
             int newMoney = newTotal - total;
@@ -361,7 +361,7 @@ namespace WebApplication2
         }
         public static DataTable ShowDataTable(string DBName)
         {
-            string connectionstring = "Data Source=localhost\\SQLExpress;Initial Catalog=財經系統;Integrated Security=true";
+            string connectionstring = System.Configuration.ConfigurationManager.ConnectionStrings["ContextModel1"].ToString();
             string querystring = "select * from " + DBName + ";";
 
             using(SqlConnection con = new SqlConnection(connectionstring))
@@ -391,7 +391,7 @@ namespace WebApplication2
         }
         public static bool AddSubList(string sub)
         {
-            string connectionstring = "Data Source=localhost\\SQLExpress;Initial Catalog=財經系統;Integrated Security=true";
+            string connectionstring = System.Configuration.ConfigurationManager.ConnectionStrings["ContextModel1"].ToString();
             string querystring = @"insert into SubList (Sublist) values (@sub);";
 
             string check = @"select SubList from SubList where SubList = @sub";

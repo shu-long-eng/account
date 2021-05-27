@@ -7,83 +7,92 @@
 // </自動產生的>
 //------------------------------------------------------------------------------
 
-namespace WebApplication2.現金分析表
+namespace WebApplication2
 {
 
 
-    public partial class WebForm1
+    public partial class PettyCashInsert
     {
 
         /// <summary>
-        /// title 控制項。
+        /// titalable 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label title;
+        protected global::System.Web.UI.WebControls.Label titalable;
 
         /// <summary>
-        /// yearSelect 控制項。
+        /// dateinpu 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList yearSelect;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl dateinpu;
 
         /// <summary>
-        /// Button1 控制項。
+        /// Case 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Case;
 
         /// <summary>
-        /// monthIncome 控制項。
+        /// ItemclassTxt 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater monthIncome;
+        protected global::System.Web.UI.WebControls.DropDownList ItemclassTxt;
 
         /// <summary>
-        /// monthExpenditure 控制項。
+        /// Paytxt 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater monthExpenditure;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Paytxt;
 
         /// <summary>
-        /// monthBalance 控制項。
+        /// reasonTxt 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater monthBalance;
+        protected global::System.Web.UI.WebControls.DropDownList reasonTxt;
 
         /// <summary>
-        /// MonthSubIncome 控制項。
+        /// invoiceTxt 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater MonthSubIncome;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText invoiceTxt;
 
         /// <summary>
-        /// MonthSubEx 控制項。
+        /// Label1 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater MonthSubEx;
+        protected global::System.Web.UI.WebControls.Label Label1;
+
+        /// <summary>
+        /// insert 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button insert;
     }
 }

@@ -7,83 +7,110 @@
 // </自動產生的>
 //------------------------------------------------------------------------------
 
-namespace WebApplication2.現金分析表
+namespace WebApplication2
 {
 
 
-    public partial class WebForm1
+    public partial class ReceiptList
     {
 
         /// <summary>
-        /// title 控制項。
+        /// ddlCompany 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label title;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCompany;
 
         /// <summary>
-        /// yearSelect 控制項。
+        /// txtMinAmount 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList yearSelect;
+        protected global::System.Web.UI.WebControls.TextBox txtMinAmount;
 
         /// <summary>
-        /// Button1 控制項。
+        /// txtMaxAmount 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.TextBox txtMaxAmount;
 
         /// <summary>
-        /// monthIncome 控制項。
+        /// ddlR_E 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater monthIncome;
+        protected global::System.Web.UI.WebControls.DropDownList ddlR_E;
 
         /// <summary>
-        /// monthExpenditure 控制項。
+        /// btnSearch 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater monthExpenditure;
+        protected global::System.Web.UI.WebControls.Button btnSearch;
 
         /// <summary>
-        /// monthBalance 控制項。
+        /// repInvoice 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater monthBalance;
+        protected global::System.Web.UI.WebControls.Repeater repInvoice;
 
         /// <summary>
-        /// MonthSubIncome 控制項。
+        /// firstPage 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater MonthSubIncome;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor firstPage;
 
         /// <summary>
-        /// MonthSubEx 控制項。
+        /// repPaging 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater MonthSubEx;
+        protected global::System.Web.UI.WebControls.Repeater repPaging;
+
+        /// <summary>
+        /// lastPage 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor lastPage;
+
+        /// <summary>
+        /// lblCurrentPage 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCurrentPage;
+
+        /// <summary>
+        /// lblTotalPage 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTotalPage;
     }
 }
