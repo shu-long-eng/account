@@ -14,7 +14,7 @@ namespace WebApplication2
         {
             string GetId = this.Request.QueryString["ID"];
             DataTable dt = DB.searchDB(GetId);
-            string date = dt.Rows[0].Field<string>("Date");
+            string date = dt.Rows[0].Field<DateTime>("Date").ToString("yyyy-MM-dd");
             string sub = dt.Rows[0].Field<string>("Sub");
             string usefor = dt.Rows[0].Field<string>("Usefor");
             string money = dt.Rows[0].Field<int?>("Money").ToString();

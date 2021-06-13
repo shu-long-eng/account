@@ -83,9 +83,9 @@ namespace journal.DBManager
         GROUP BY YEAR([CreateTime]), 
         DatePart(MONTH, [CreateTime]),IncomeAndExpenditure) AS 
 	    MontlySalesData where MontlySalesData.IncomeAndExpenditure = '支出' and [Year] = @year order by [Month];
-        select table1.month,table1.time,Assets.Total from
-        (select MONTH(CreateTime) as [month],MAX(CreateTime) as [time] from Assets group by MONTH(CreateTime)) 
-        as table1 left join Assets on table1.[time] = Assets.CreateTime;
+        select table1.month,table1.time,Assets.Total,table1.Year from
+        (select MONTH(CreateTime) as [month],MAX(CreateTime) as [time],YEAR(CreateTime) as [Year] from Assets group by MONTH(CreateTime),YEAR(CreateTime)) 
+        as table1 left join Assets on table1.[time] = Assets.CreateTime where table1.Year = @year;
         ";
 
             using (SqlConnection con = new SqlConnection(connectionstring))
