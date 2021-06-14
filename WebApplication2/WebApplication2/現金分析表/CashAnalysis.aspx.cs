@@ -185,7 +185,7 @@ namespace WebApplication2.現金分析表
 
             sheet1.AddMergedRegion(new CellRangeAddress(sheet1.LastRowNum + 1, sheet1.LastRowNum + 1, 0, 12));
             ICell extitle = sheet1.CreateRow(sheet1.LastRowNum + 1).CreateCell(0);
-            extitle.SetCellValue("收入");
+            extitle.SetCellValue("支出");
             extitle.CellStyle = TitleCellCtyle;
 
 
